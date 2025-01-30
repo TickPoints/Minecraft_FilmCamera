@@ -15,5 +15,6 @@ ___
 * Github: https://github.com/TickPoints/Minecraft_FilmCamera
 ___
 # 更多
-如果您需要更多语言，请阅读 [这个](./index.md)
-欲了解更多，请阅读 [文档](../zh/index.md)
+如果您需要更多语言，请阅读 [这个](./index.md)。
+
+欲了解更多，请阅读 [文档](../zh/index.md)。

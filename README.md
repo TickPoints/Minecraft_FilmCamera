@@ -15,5 +15,6 @@ Publicly available:
 * Github: https://github.com/TickPoints/Minecraft_FilmCamera
 ___
 # More
-If you need more languages, please read [this](./Documents/README/index.md)
-Read [document](./Documents/en/index.md)
+If you need more languages, please read [this](./Documents/README/index.md).
+
+Read [document](./Documents/en/index.md).
