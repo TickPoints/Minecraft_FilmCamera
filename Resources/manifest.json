@@ -1,0 +1,39 @@
+{
+    "format_version": 2,
+    "header": {
+        "uuid": "6191e36b-4e3d-4bb6-92b1-0b07ced5da94",
+        "name": "FilmCamera[RP]",
+        "description": "FilmCamera is a convenient \"/camera\" tool based on SAPI.",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            21,
+            51
+        ]
+    },
+    "dependencies": [
+        {
+            "uuid": "2e94b8ec-192b-4716-9d1f-27b7a0159141",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "modules": [
+        {
+            "uuid": "b020b585-cd2f-4b21-883f-df316767d498",
+            "type": "resources",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ]
+}

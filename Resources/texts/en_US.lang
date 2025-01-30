@@ -1,0 +1,17 @@
+## Rendering
+## This file is for Simplified Chinese users
+## Note: Translations may not be accurate
+
+## Script content
+### Command System
+#### Metadata
+##### Source ID
+filmcamera.scripts.command_system.meta.source_id.main=Command System
+filmcamera.scripts.command_system.meta.source_id.configureParser=Command System-Configuration Parser
+#### Report Error
+filmcamera.scripts.command_system.error.no_permission=§cYou have not yet been granted valid permissions, please apply to an administrator.
+filmcamera.scripts.command_system.error.parameter_missing=§cThe parameter [%s] is missing.
+filmcamera.scripts.command_system.error.input_type_error=§cThe unexpected %1 occurs between %2 >> %1 << %3, which should be of type %4.
+filmcamera.scripts.command_system.error.input_type_error_with_enumeration=§cThe unexpected %1 occurs between %2 >> %1 << %3, which should be of type Enums and can only be one of [ %4 ].
+filmcamera.scripts.command_system.error.command_does_not_exist=§cCommand %s does not exist.
+filmcamera.scripts.command_system.error.command_work_error=§cAn error occurred inside the function during command execution: %s

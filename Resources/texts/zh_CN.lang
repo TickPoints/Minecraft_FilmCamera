@@ -1,0 +1,17 @@
+## 翻译
+## 该文件适用于简体中文用户
+## 注：翻译内容不一定准确  
+
+## 脚本内容
+### 命令系统
+#### 元数据
+##### 来源ID
+filmcamera.scripts.command_system.meta.source_id.main=命令系统
+filmcamera.scripts.command_system.meta.source_id.configureParser=命令系统-配置解析器
+#### 报错
+filmcamera.scripts.command_system.error.no_permission=§c您尚未获得有效权限，请向管理员申请。
+filmcamera.scripts.command_system.error.parameter_missing=§c参数[%s]缺失。
+filmcamera.scripts.command_system.error.input_type_error=§c意外的 %1 出现在 %2 >> %1 << %3 间，它应该为 %4 类型。
+filmcamera.scripts.command_system.error.input_type_error_with_enumeration=§c意外的 %1 出现在 %2 >> %1 << %3 间，它应该为 Enums 类型，且只能为[ %4 ]中的一个。
+filmcamera.scripts.command_system.error.command_does_not_exist=§c命令 %s 不存在。
+filmcamera.scripts.command_system.error.command_work_error=§c命令执行时函数内部出现了错误：%s

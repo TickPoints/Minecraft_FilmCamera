@@ -1,0 +1,65 @@
+{
+    "format_version": 2,
+    "header": {
+        "uuid": "2e94b8ec-192b-4716-9d1f-27b7a0159141",
+        "name": "FilmCamera[BP]",
+        "description": "FilmCamera is a convenient \"/camera\" tool based on SAPI.",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            21,
+            51
+        ]
+    },
+    "capabilities": [
+        "script_eval"
+    ],
+    "dependencies": [
+        {
+            "uuid": "6191e36b-4e3d-4bb6-92b1-0b07ced5da94",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        },
+        {
+            "module_name": "@minecraft/server",
+            "version": "1.17.0-beta"
+        },
+        {
+            "module_name": "@minecraft/server-ui",
+            "version": "1.3.0"
+        }
+    ],
+    "modules": [
+        {
+            "uuid": "ca2bea45-996b-410e-942e-4e9283821ea3",
+            "type": "data",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        },
+        {
+            "uuid": "40f008bb-68b3-41e3-8abb-6a6a4832603f",
+            "type": "script",
+            "language": "javascript",
+            "entry": "scripts/index.js",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "metadata": {
+        "author": "TickPoints",
+        "license": "GPL"
+    }
+}
