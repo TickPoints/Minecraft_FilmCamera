@@ -8,7 +8,7 @@ Next, create a new world (you can also use the existing world, but remember to c
 1. Change the mode to **Create** for the next operation
 2. Enable cheats and Command Blocks (required)
 3. Go to *Experiments* and enable the **Beta APIs** (required)
-4. Enable **Creator Cameras** (provides more convenient lens effects), **Creator Cameras** and **Aim Assist** (facilitates special lenses for aiming entities)
+4. Enable **Creator Cameras** (provides more convenient lens effects) and **Aim Assist** (facilitates special lenses for aiming entities)
 5. It is best to have all **ADD-ON CRERTORS** enabled, as future features and other Addon may be used
 
 # Simple Command System
