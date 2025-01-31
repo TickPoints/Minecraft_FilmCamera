@@ -21,7 +21,8 @@ export const rule = {
             }, {
                 "type": "string"
             }],
-            "needPermission": true
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.console"
         }
     },
     "getEntity": {
@@ -73,13 +74,16 @@ export const rule = {
                 "conversion": true,
                 "requirement": "select"
             }],
-            "needPermission": true
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.getEntity"
         }
     },
     "help": {
         "type": "function",
         "run": function(performer) {
-            let message = "\n";
+            let message = {
+                "rawtext": []
+            };
 
             function rankJSON(jsonObj) {
                 const sortedMap = new Map(Object.entries(jsonObj).sort(([key1], [key2]) => key1.localeCompare(key2)));
@@ -89,15 +93,24 @@ export const rule = {
             for (let i of Object.keys(rankJSON(rule))) {
                 let config = rule[i].config;
                 if (config === undefined) {
-                    message += `${i} - [0]\n`;
+                    message.rawtext.push({
+                        "text": `${i} - [0]\n`
+                    });
                 } else {
-                    message += `${i} - [${config.needPermission ? "op" : "common"}]${config.description ? raw(config.description) : ""}\n`
+                    message.rawtext.push({
+                        "text": `${i} - [${config.needPermission ? "op" : "common"}]`
+                    });
+                    message.rawtext.push(raw(config.description));
+                    message.rawtext.push({
+                        "text": "\n"
+                    });
                 }
             }
-
+            performer.sendMessage(message);
         },
         "config": {
-            "needPermission": true
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.help"
         }
     },
     "getEntities": {
@@ -118,13 +131,16 @@ export const rule = {
                 "enumeration": ["overworld", "nether", "the_end"],
                 "requirement": "select"
             }],
-            "needPermission": true
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.getEntities"
         }
     },
     "playCameraScript": {
         "type": "function",
         "run": function(_performer, script_name, players = ServerWorld.getAllPlayers()) {
-            import("../controller/script_player.js").then(({ play_script }) => {
+            import("../controller/script_player.js").then(({
+                play_script
+            }) => {
                 play_script(script_name, players);
             }).catch(e => {
                 console.error(`The playCamera Script command encountered some errors during execution: \n${e}`);
@@ -138,7 +154,21 @@ export const rule = {
                 "conversion": true,
                 "requirement": "select"
             }],
-            "needPermission": true
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.playCameraScript"
+        }
+    },
+    "runMinecraftCommand": {
+        "type": "function",
+        "run": function(performer, MinecraftCommand) {
+            return JSON.stringify(performer.runCommand(MinecraftCommand));
+        },
+        "config": {
+            "parameters": [{
+                "type": "string"
+            }],
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.runMinecraftCommand"
         }
     }
 };

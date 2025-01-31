@@ -15,3 +15,10 @@ filmcamera.scripts.command_system.error.input_type_error=§c意外的 %1 出现�
 filmcamera.scripts.command_system.error.input_type_error_with_enumeration=§c意外的 %1 出现在 %2 >> %1 << %3 间，它应该为 Enums 类型，且只能为[ %4 ]中的一个。
 filmcamera.scripts.command_system.error.command_does_not_exist=§c命令 %s 不存在。
 filmcamera.scripts.command_system.error.command_work_error=§c命令执行时函数内部出现了错误：%s
+#### 命令帮助
+filmcamera.scripts.command_system.help.commands.help=用于获取命令帮助
+filmcamera.scripts.command_system.help.commands.console=用于在开发者GUI输出不同等级的消息
+filmcamera.scripts.command_system.help.commands.getEntity=用于获取单个实体
+filmcamera.scripts.command_system.help.commands.getEntities=用于获取多个实体
+filmcamera.scripts.command_system.help.commands.playCameraScript=用于播放相机脚本
+filmcamera.scripts.command_system.help.commands.runMinecraftCommand=用于执行我的世界命令
