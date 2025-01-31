@@ -4,7 +4,7 @@ FilmCamera is a convenient "/camera" tool based on SAPI.
 This addon uses `GPL` license.
 ___
 # Adapt
-The first thing to note is that FilmCamera is always available for the latest official bedrock version, but you can also use it in some versions, but you need to pay attention to the following:
+The first thing to note is that FilmCamera is always available for the latest stable Bedrock version, but you can also use it in some versions, but you need to pay attention to the following:
 * FilmCamera uses the `/camera` command, which was added to the game in version `1.20.0` and cannot be used in versions earlier than that.
 * FilmCamera uses experimental creator lenses and cameras, which were added to the game in version `1.21.20.23`, and do not work well below that.
 * SAPI has a major revision in `1.9.0` (this is the SAPI version), which is also around `1.20.0`, and is not available below this version.

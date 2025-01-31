@@ -22,6 +22,6 @@
 
 现在在控制台输入：
 
-> !runMinecraftCommand (&say Hello, world!)
+> !runMinecraftCommand (&say Hello, FilmCamera!)
 
-这将以您的身份执行Minecraft命令`say Hello, world!`，执行后，您可以看到消息。
+这将以您的身份执行Minecraft命令`say Hello, FilmCamera!`，执行后，您可以看到消息。
