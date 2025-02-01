@@ -12,7 +12,7 @@ Next, create a new world (you can also use the existing world, but remember to c
 5. It is best to have all **ADD-ON CRERTORS** enabled, as future features and other Addon may be used
 
 # Simple Command System
-First we provide a command system to help you better operate, and we will briefly introduce it in the following (if you need more introduction, read [this](./CommandSystem/index.md)). Here we only introduce some common commands. First we enter on the console:
+First we provide a command system to help you better operate, and we will briefly introduce it in the following (if you need more introduction, read [this](../CommandSystem/index.md)). Here we only introduce some common commands. First we enter on the console:
 
 > !
 

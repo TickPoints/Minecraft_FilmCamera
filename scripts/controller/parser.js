@@ -1,17 +1,7 @@
-const operator_map = {
-    "camera-clear": function(type) {
-        return {
-            "script": "PlayerCamera.clear();",
-            "command": "/camera [player] clear"
-        } [type];
-    },
-    "player-runMinecraftCommand": function(type, command) {
-        return {
-            "script": `Player.runCommand("${command}");`,
-            "command": `/execute as [player] at @s run ${command}`
-        } [type];
-    }
+import {
+    operator_map
 }
+from "./maps/operator_map.js"
 
 function parse_scene(scene, type = "script") {
     let results = [];
@@ -22,12 +12,10 @@ function parse_scene(scene, type = "script") {
     return results;
 }
 
-/*
+
 function parse_scene_composer(scene_composer) {
     scene_composer.order
 }
-*/
-
 
 export {
     parse_scene

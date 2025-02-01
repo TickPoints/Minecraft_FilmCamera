@@ -28,4 +28,4 @@ async function play_script(script_name, players) {
 
 export {
     play_script
-}
+};
