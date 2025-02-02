@@ -12,11 +12,6 @@ function parse_scene(scene, type = "script") {
     return results;
 }
 
-
-function parse_scene_composer(scene_composer) {
-    scene_composer.order
-}
-
 export {
     parse_scene
 };
