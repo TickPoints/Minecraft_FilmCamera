@@ -10,5 +10,11 @@ export const operator_map = {
             "script": `Player.runCommand("${command}");`,
             "command": `/execute as [player] at @s run ${command}`
         } [type];
-    }
+    },
+    "time-waitTicks": function(type, ticks) {
+        return {
+            "script": `await ServerSystem.waitTicks(${ticks});`,
+            "command": `!!!waitTicks ${ticks}`
+        } [type];
+    },
 }
