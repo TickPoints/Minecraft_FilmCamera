@@ -1,6 +1,8 @@
-# bluebird
+# 废除
+下面的项目不再为本项目的依赖项目，它们在曾经可能使用过或错误的被依赖，现在在下面留作存档：
+## bluebird
 本项目使用了bluebird的build version 3.7.2(core)，以下是相关内容：
-## 开源协议
+### 开源协议
 The MIT License (MIT)
 
 Copyright (c) 2013-2018 Petka Antonov
@@ -22,6 +24,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-## 链接
+### 链接
 * Github仓库：https://github.com/petkaantonov/bluebird
 * 官网：http://bluebirdjs.com/docs/getting-started.html

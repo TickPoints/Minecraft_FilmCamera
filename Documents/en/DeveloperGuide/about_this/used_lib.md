@@ -1,6 +1,8 @@
-# bluebird
+# Abolish
+The following projects are no longer dependencies of this project. They may have been used or incorrectly relied upon in the past and are now archived below:
+## bluebird
 This project uses bluebird's build version 3.7.2 (core), and here's what it's about:
-## License
+### License
 The MIT License (MIT)
 
 Copyright (c) 2013-2018 Petka Antonov
@@ -22,6 +24,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-## Links
+### Links
 * Github repo：https://github.com/petkaantonov/bluebird
 * Official website：http://bluebirdjs.com/docs/getting-started.html
