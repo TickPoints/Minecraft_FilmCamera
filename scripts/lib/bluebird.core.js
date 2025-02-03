@@ -27,7 +27,15 @@
  * Features enabled: core
  * Features disabled: race, call_get, generators, map, nodeify, promisify, props, reduce, settle, some, using, timers, filter, any, each
  */
+import {
+    system as ServerSystem
+} from '@minecraft/server';
+// Adaptation changes for this project: Use runTimeout instead of setTimeout
+const setTimeout = function(callback, tickDelay = null) {
+    ServerSystem.runTimeout(callback, tickDelay);
+}
 ! function(e) {
+    // Adaptation changes for this project: Change global to globalThis
     if ("object" == typeof exports && "undefined" != typeof module) module.exports = e();
     else if ("function" == typeof define && define.amd) define([], e);
     else {
@@ -1227,21 +1235,9 @@
                 }
 
                 function formatAndLogError(error, title, isSoft) {
-                    if (typeof console !== "undefined") {
-                        var message;
-                        if (util.isObject(error)) {
-                            var stack = error.stack;
-                            message = title + formatStack(stack, error);
-                        } else {
-                            message = title + String(error);
-                        }
-                        if (typeof printWarning === "function") {
-                            printWarning(message, isSoft);
-                        } else if (typeof console.log === "function" ||
-                            typeof console.log === "object") {
-                            console.log(message);
-                        }
-                    }
+                    // Adaptation changes for this project: Modify formatAndLogError job
+                    if (error.message include("self")) console.log("[BlueBird]", title, error.message, error.stack);
+                    else console.error("[BlueBird]", title, error.message, error.stack);
                 }
 
                 function fireRejectionEvent(name, localHandler, reason, promise) {
@@ -1514,23 +1510,8 @@
                     return null;
 
                 })([]);
-
-                if (typeof console !== "undefined" && typeof console.warn !== "undefined") {
-                    printWarning = function(message) {
-                        console.warn(message);
-                    };
-                    if (util.isNode && process.stderr.isTTY) {
-                        printWarning = function(message, isSoft) {
-                            var color = isSoft ? "\u001b[33m" : "\u001b[31m";
-                            console.warn(color + message + "\u001b[0m\n");
-                        };
-                    } else if (!util.isNode && typeof(new Error().stack) === "string") {
-                        printWarning = function(message, isSoft) {
-                            console.warn("%c" + message,
-                                isSoft ? "color: darkorange" : "color: red");
-                        };
-                    }
-                }
+                
+                // Adaptation changes for this project: Clear invalid printWarning
 
                 var config = {
                     warnings: warnings,

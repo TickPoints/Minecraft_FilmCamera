@@ -1,9 +1,11 @@
+const AsyncFunction = async function () {}.constructor;
+
 async function sandbox(code, localScope) {
     localScope.sandboxResult = null;
     // Debug:
-    console.warn("with(this) {" + code + "\nreturn sandboxResult; }");
+    // console.warn("with(this) {" + code + "\nreturn sandboxResult; }");
     try {
-        const func = new Function("with(this) {" + code + "\nreturn sandboxResult; }");
+        const func = new AsyncFunction("with(this) {" + code + "\nreturn sandboxResult; }");
         localScope.sandboxResult = func.call(localScope);
         return localScope.sandboxResult;
     } catch (e) {

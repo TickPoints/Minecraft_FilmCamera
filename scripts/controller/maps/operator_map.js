@@ -5,6 +5,24 @@ export const operator_map = {
             "command": "/camera [player] clear"
         } [type];
     },
+    "camera-fade": function(type, fadeCameraOptions) {
+        return {
+            "script": `PlayerCamera.fade(${JSON.stringify(fadeCameraOptions)});`,
+            "command": "/camera [player] clear"
+        } [type];
+    },
+    "inputpermission-movement": function(type, status) {
+        return {
+            "script": `player.inputPermissions.setPermissionCategory(2, ${status});`,
+            "command": `/inputpermission set [player] movement ${status}`
+        } [type];
+    },
+    "inputpermission-camera": function(type, status) {
+        return {
+            "script": `player.inputPermissions.setPermissionCategory(1, ${status});`,
+            "command": `/inputpermission set [player] camera ${status}`
+        } [type];
+    },
     "player-runMinecraftCommand": function(type, command) {
         return {
             "script": `Player.runCommand("${command}");`,
