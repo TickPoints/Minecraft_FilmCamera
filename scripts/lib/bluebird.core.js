@@ -1236,7 +1236,7 @@ const setTimeout = function(callback, tickDelay = null) {
 
                 function formatAndLogError(error, title, isSoft) {
                     // Adaptation changes for this project: Modify formatAndLogError job
-                    if (error.message include("self")) console.log("[BlueBird]", title, error.message, error.stack);
+                    if (error.message.includes("self")) console.log("[BlueBird]", title, error.message, error.stack);
                     else console.error("[BlueBird]", title, error.message, error.stack);
                 }
 
