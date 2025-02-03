@@ -74,7 +74,6 @@ export const rule = {
                 "conversion": true,
                 "requirement": "select"
             }],
-            "needPermission": true,
             "description": "$filmcamera.scripts.command_system.help.commands.getEntity"
         }
     },
@@ -98,7 +97,7 @@ export const rule = {
                     });
                 } else {
                     message.rawtext.push({
-                        "text": `${i} - [${config.needPermission ? "op" : "common"}]`
+                        "text": `${i} - [${config.needPermission ? "editor" : "common"}]`
                     });
                     message.rawtext.push(raw(config.description));
                     message.rawtext.push({
@@ -109,7 +108,6 @@ export const rule = {
             performer.sendMessage(message);
         },
         "config": {
-            "needPermission": true,
             "description": "$filmcamera.scripts.command_system.help.commands.help"
         }
     },
@@ -131,7 +129,6 @@ export const rule = {
                 "enumeration": ["overworld", "nether", "the_end"],
                 "requirement": "select"
             }],
-            "needPermission": true,
             "description": "$filmcamera.scripts.command_system.help.commands.getEntities"
         }
     },

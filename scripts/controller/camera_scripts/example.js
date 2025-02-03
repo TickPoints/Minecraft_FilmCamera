@@ -19,8 +19,17 @@ export const entry = {
                 "say FilmCamera"
             ]
         }]
+    }, {
+        "frames": [{
+            "operator": "player-runMinecraftCommand",
+            "args": [
+                "say Test Complete!"
+            ]
+        }]
     }],
     "scenes_composer": [{
         "order": "top"
+    }, {
+        "order": "follow"
     }]
 };
