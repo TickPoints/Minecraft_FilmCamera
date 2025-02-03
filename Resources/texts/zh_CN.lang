@@ -22,3 +22,6 @@ filmcamera.scripts.command_system.help.commands.getEntity=用于获取单个实�
 filmcamera.scripts.command_system.help.commands.getEntities=用于获取多个实体
 filmcamera.scripts.command_system.help.commands.playCameraScript=用于播放相机脚本
 filmcamera.scripts.command_system.help.commands.runMinecraftCommand=用于执行我的世界命令
+### UI
+filmcamera.scripts.ui.MultiPageUI.last_page=上一页
+filmcamera.scripts.ui.MultiPageUI.next_page=下一页

@@ -22,3 +22,6 @@ filmcamera.scripts.command_system.help.commands.getEntity=For getting a single e
 filmcamera.scripts.command_system.help.commands.getEntities=For getting multiple entities
 filmcamera.scripts.command_system.help.commands.playCameraScript=For playing the camera script
 filmcamera.scripts.command_system.help.commands.runMinecraftCommand=For executing MinecraftCommand
+### UI
+filmcamera.scripts.ui.MultiPageUI.last_page=Last Page
+filmcamera.scripts.ui.MultiPageUI.next_page=Next Page
