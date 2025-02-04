@@ -38,8 +38,11 @@ class ActionUI {
         rootUI.title(raw(this.title));
         rootUI.body(raw(this.message));
         for (const i of this.list) {
-            if (typeof i === "string") rootUI.button(raw(i));
-            else rootUI.button(raw(i[0]), i[1]);
+            if (typeof i === "string") {
+                rootUI.button(raw(i));
+            } else {
+                rootUI.button(raw(i[0]), i[1]);
+            }
         }
         return this;
     };
@@ -56,11 +59,10 @@ class ActionUI {
         return this;
     };
     show(player) {
-        this.build();
         const rootUI = this._rootUI;
         return rootUI.show(player).then(response => {
             if (!response.canceled) {
-                func[response.selection](player);
+                this.func[response.selection](player);
             }
             switch (response.cancelationReason) {
                 case "UserBusy":
@@ -86,9 +88,7 @@ class MultiPageUI {
     UserBusyProcessor() {};
     UserClosedProcessor() {};
     title = "Unknown";
-    message = [
-        "Unknown"
-    ];
+    message = "Unknown";
     list = [];
     func = [];
     pageValue = 10;
@@ -118,18 +118,20 @@ class MultiPageUI {
                     }
                 ]
             });
-            rootUI.body(raw(this.message[i]));
-            rootUI.button(raw("$"));
+            rootUI.body(raw(this.message));
+            rootUI.button(raw("$filmcamera.scripts.ui.MultiPageUI.last_page"));
             for (const buttonData of lists[i]) {
-                if (typeof buttonData === "string") rootUI.button(raw(buttonData));
-                else rootUI.button(raw(buttonData[0]), buttonData[1]);
+                if (typeof buttonData === "string") {
+                    rootUI.button(raw(buttonData));
+                } else {
+                    rootUI.button(raw(buttonData[0]), buttonData[1]);
+                }
             }
-            rootUI.button(raw("$"));
+            rootUI.button(raw("$filmcamera.scripts.ui.MultiPageUI.next_page"));
         }
         return this;
     };
     show(player, pageIndex = 0) {
-        this.build();
         const rootUIs = this._rootUIs;
         return rootUIs[pageIndex].show(player).then(response => {
             if (!response.canceled) {
@@ -160,12 +162,6 @@ class MultiPageUI {
             this.UserCanceledProcessor(player, pageIndex);
         });
     }
-}
-
-class BookUI extends MultiPageUI {
-    pageValue = 10;
-    list = [];
-    func = [];
 }
 
 export {
