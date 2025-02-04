@@ -25,3 +25,5 @@ filmcamera.scripts.command_system.help.commands.runMinecraftCommand=For executin
 ### UI
 filmcamera.scripts.ui.MultiPageUI.last_page=Last Page
 filmcamera.scripts.ui.MultiPageUI.next_page=Next Page
+filmcamera.scripts.ui.new.menu.title=MENU
+filmcamera.scripts.ui.new.menu.message=Welcome to use FilmCamera. Here is the menu

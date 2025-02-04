@@ -132,6 +132,19 @@ export const rule = {
             "description": "$filmcamera.scripts.command_system.help.commands.getEntities"
         }
     },
+    "runMinecraftCommand": {
+        "type": "function",
+        "run": function(performer, MinecraftCommand) {
+            return JSON.stringify(performer.runCommand(MinecraftCommand));
+        },
+        "config": {
+            "parameters": [{
+                "type": "string"
+            }],
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.runMinecraftCommand"
+        }
+    },
     "playCameraScript": {
         "type": "function",
         "run": function(_performer, script_name, players = ServerWorld.getAllPlayers()) {
@@ -155,17 +168,17 @@ export const rule = {
             "description": "$filmcamera.scripts.command_system.help.commands.playCameraScript"
         }
     },
-    "runMinecraftCommand": {
+    "menu": {
         "type": "function",
-        "run": function(performer, MinecraftCommand) {
-            return JSON.stringify(performer.runCommand(MinecraftCommand));
+        "run": function(performer) {
+            import("../ui/ui_list.js").then(({
+                ui_list
+            }) => {
+                ui_list.menu(performer);
+            });
         },
         "config": {
-            "parameters": [{
-                "type": "string"
-            }],
-            "needPermission": true,
-            "description": "$filmcamera.scripts.command_system.help.commands.runMinecraftCommand"
+            "description": "$filmcamera.scripts.command_system.help.commands.menu"
         }
     }
 };
