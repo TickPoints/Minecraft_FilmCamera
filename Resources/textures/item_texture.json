@@ -1,0 +1,12 @@
+{
+    "resource_pack_name": "filmcamera",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "selection_bar1": {
+            "textures": "textures/items/selection_bar1.png"
+        },
+        "selection_bar2": {
+            "textures": "textures/items/selection_bar2.png"
+        }
+    }
+}

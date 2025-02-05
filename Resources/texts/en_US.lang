@@ -27,3 +27,7 @@ filmcamera.scripts.ui.MultiPageUI.last_page=Last Page
 filmcamera.scripts.ui.MultiPageUI.next_page=Next Page
 filmcamera.scripts.ui.new.menu.title=MENU
 filmcamera.scripts.ui.new.menu.message=Welcome to use FilmCamera. Here is the menu
+## Items
+itemGroup.name.filmcamera=§eFILMCAMERA Items
+item.filmcamera:selection_bar1.name=selection bar1
+item.filmcamera:selection_bar2.name=selection bar2

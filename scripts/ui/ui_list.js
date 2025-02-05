@@ -6,11 +6,15 @@ export const ui_list = {
         root.title = "$filmcamera.scripts.ui.new.menu.title";
         root.message = "$filmcamera.scripts.ui.new.menu.message";
         root.list = [
-            "Test"
+            "编辑器",
+            "设置"
         ];
         root.func = [
             function(player) {
                 player.sendMessage("Test!");
+            },
+            function(player) {
+            
             }
         ];
         root.preventBusy();

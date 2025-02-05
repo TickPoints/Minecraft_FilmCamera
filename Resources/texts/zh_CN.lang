@@ -27,3 +27,7 @@ filmcamera.scripts.ui.MultiPageUI.last_page=上一页
 filmcamera.scripts.ui.MultiPageUI.next_page=下一页
 filmcamera.scripts.ui.new.menu.title=菜单
 filmcamera.scripts.ui.new.menu.message=欢迎使用 FilmCamera。以下是菜单
+## 物品
+itemGroup.name.filmcamera=§eFILMCAMERA物品
+item.filmcamera:selection_bar1.name=选择棒1
+item.filmcamera:selection_bar2.name=选择棒2
