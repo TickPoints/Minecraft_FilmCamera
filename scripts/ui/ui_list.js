@@ -55,7 +55,11 @@ export const ui_list = {
             ["textField", "$filmcamera.scripts.ui.new.editor_new_setName.textField1.label", "$filmcamera.scripts.ui.new.editor_new_setName.textField1.placeholderText"]
         ];
         root.func = function(values) {
-            if (!/^[a-zA-Z0-9_]+$/.test(values[0])) root.show(player);
+            if (!/^[a-zA-Z0-9_]+$/.test(values[0])) {
+                root.show(player);
+                return;
+            }
+            
         };
         root.UserClosedProcessor = function(player) {
             ui_list.editor_menu(player);

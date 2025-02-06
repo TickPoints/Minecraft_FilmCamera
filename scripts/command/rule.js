@@ -180,5 +180,19 @@ export const rule = {
         "config": {
             "description": "$filmcamera.scripts.command_system.help.commands.menu"
         }
+    },
+    "saveData": {
+        "type": "function",
+        "run": function(_performer) {
+            import("../lib/data_manager.js").then(({
+                saveData
+            }) => {
+                saveData();
+            });
+        },
+        "config": {
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.saveData"
+        }
     }
 };

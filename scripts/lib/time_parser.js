@@ -75,9 +75,6 @@ async function handleRelativeTime(time, trigger) {
             await ServerSystem.waitTicks(time.tick);
             trigger();
             break;
-        case "realistic_stamp":
-            ServerSystem.runInterval(() => trigger(), time.time_stamp);
-            break;
         default:
             trigger();
             return;

@@ -1,10 +1,23 @@
 import {
-    world as ServerWorld
+    writeWorldDataInit,
+    writePlayerDataInit,
+    getDataManager
 }
-from "@minecraft/server";
+from "../../lib/data_manager.js";
 
-ServerWorld.afterEvents.playerSpawn.subscribe(eventData => {
-    if (!eventData.initialSpawn) return;
-    const player = eventData.player;
-    //
+const InitMap = {
+    "World": {
+        "last_version": [1, 0, 0]
+    },
+    "Player": {
+        //
+    }
+}
+
+writeWorldDataInit(() => {
+    return InitMap.World;
+});
+
+writePlayerDataInit(() => {
+    return InitMap.Player;
 });
