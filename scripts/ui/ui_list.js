@@ -49,10 +49,10 @@ export const ui_list = {
     },
     "editor_new_setName": : function(player) {
         const root = new ui.ActionUI();
-        root.title = "$filmcamera.scripts.ui.new.editor_new.setName.title";
-        root.message = "$filmcamera.scripts.ui.new.editor_new.setName.message";
+        root.title = "$filmcamera.scripts.ui.new.editor_new.title";
+        root.message = "$filmcamera.scripts.ui.new.editor_new_setName.message";
         root.list = [
-            ["textField", "$filmcamera.scripts.ui.new.editor_new.setName.textField1.label", "$filmcamera.scripts.ui.new.editor_new.setName.textField1.placeholderText"]
+            ["textField", "$filmcamera.scripts.ui.new.editor_new_setName.textField1.label", "$filmcamera.scripts.ui.new.editor_new_setName.textField1.placeholderText"]
         ];
         root.UserClosedProcessor = function(player) {
             ui_list.editor_menu(player);

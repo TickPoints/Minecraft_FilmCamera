@@ -27,6 +27,17 @@ filmcamera.scripts.ui.MultiPageUI.last_page=Last Page
 filmcamera.scripts.ui.MultiPageUI.next_page=Next Page
 filmcamera.scripts.ui.new.menu.title=MENU
 filmcamera.scripts.ui.new.menu.message=Welcome to use FilmCamera. Here is the menu
+filmcamera.scripts.ui.new.menu.button1=Editor
+filmcamera.scripts.ui.new.menu.button2=Setting
+filmcamera.scripts.ui.new.editor_menu.title=Editor Menu
+filmcamera.scripts.ui.new.editor_menu.message=Use the editor to build, export, modify
+filmcamera.scripts.ui.new.editor_menu.button1=New
+filmcamera.scripts.ui.new.editor_menu.button2=Open
+filmcamera.scripts.ui.new.editor_menu.button3=Setting
+filmcamera.scripts.ui.new.editor_new.title=New Project
+filmcamera.scripts.ui.new.editor_new_setName.message=Name for the project(Contains only English letters, numbers, and underscores)
+filmcamera.scripts.ui.new.editor_new_setName.textField1.label=Name
+filmcamera.scripts.ui.new.editor_new_setName.textField1.placeholderText=Input name
 ## Items
 itemGroup.name.filmcamera=§eFILMCAMERA Items
 item.filmcamera:selection_bar1.name=selection bar1
