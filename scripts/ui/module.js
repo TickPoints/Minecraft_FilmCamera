@@ -79,6 +79,61 @@ class ActionUI {
     };
 }
 
+class ModalUI {
+    constructor() {};
+    _rootUI = new ModalFormData();
+    UserCanceledProcessor() {};
+    UserBusyProcessor() {};
+    UserClosedProcessor() {};
+    title = "Unknown";
+    message = "Unknown";
+    list = [];
+    func = function() {};
+    submitMessage = "$gui.submit";  // Defined by Minecraft
+    build() {
+        const rootUI = this._rootUI;
+        rootUI.title(raw(this.title));
+        rootUI.body(raw(this.message));
+        rootUI.submitButton(raw(this.submitMessage));
+        for (const i of list) {
+            var args = i.splice(0);
+            for (let j = 0; j < args.length; j ++) args[j] = raw(args[j]);
+            rootUI[i[0]](...args);
+        }
+        return this;
+    };
+    preventBusy() {
+        this.UserBusyProcessor = function(player) {
+            this.show(player);
+        }
+        return this;
+    };
+    preventCanceled() {
+        this.UserCanceledProcessor = function(player) {
+            this.show(player);
+        }
+        return this;
+    };
+    show(player) {
+        const rootUI = this._rootUI;
+        return rootUI.show(player).then(response => {
+            if (!response.canceled) {
+                this.func(response.formValues);
+            }
+            switch (response.cancelationReason) {
+                case "UserBusy":
+                    this.UserBusyProcessor(player);
+                    break;
+                case "UserClosed":
+                    this.UserClosedProcessor(player);
+                    break;
+                default:
+                    return;
+            }
+            this.UserCanceledProcessor(player);
+        });
+    };
+}
 
 // Special UI
 class MultiPageUI {
@@ -166,5 +221,6 @@ class MultiPageUI {
 
 export {
     ActionUI,
-    MultiPageUI
+    MultiPageUI,
+    ModalUI
 };
