@@ -22,6 +22,8 @@ filmcamera.scripts.command_system.help.commands.getEntity=For getting a single e
 filmcamera.scripts.command_system.help.commands.getEntities=For getting multiple entities
 filmcamera.scripts.command_system.help.commands.playCameraScript=For playing the camera script
 filmcamera.scripts.command_system.help.commands.runMinecraftCommand=For executing MinecraftCommand
+filmcamera.scripts.command_system.help.commands.saveData=For showing MENU UI
+filmcamera.scripts.command_system.help.commands.saveData=For saving data of FilmCamera
 ### UI
 filmcamera.scripts.ui.MultiPageUI.last_page=Last Page
 filmcamera.scripts.ui.MultiPageUI.next_page=Next Page
@@ -36,7 +38,7 @@ filmcamera.scripts.ui.new.editor_menu.button2=Open
 filmcamera.scripts.ui.new.editor_menu.button3=Setting
 filmcamera.scripts.ui.new.editor_new.title=New Project
 filmcamera.scripts.ui.new.editor_new_setName.message=Name for the project(Contains only English letters, numbers, and underscores)
-filmcamera.scripts.ui.new.editor_new_setName.textField1.label=Name
+filmcamera.scripts.ui.new.editor_new_setName.textField1.label=Name(Contains only English letters, numbers, and underscores, errors will restart the input)
 filmcamera.scripts.ui.new.editor_new_setName.textField1.placeholderText=Input name
 ## Items
 itemGroup.name.filmcamera=§eFILMCAMERA Items
