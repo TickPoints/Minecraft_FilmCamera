@@ -47,13 +47,16 @@ export const ui_list = {
         root.build();
         root.show(player);
     },
-    "editor_new_setName": : function(player) {
-        const root = new ui.ActionUI();
+    "editor_new_setName": function(player) {
+        const root = new ui.ModalUI();
         root.title = "$filmcamera.scripts.ui.new.editor_new.title";
         root.message = "$filmcamera.scripts.ui.new.editor_new_setName.message";
         root.list = [
             ["textField", "$filmcamera.scripts.ui.new.editor_new_setName.textField1.label", "$filmcamera.scripts.ui.new.editor_new_setName.textField1.placeholderText"]
         ];
+        root.func = function(values) {
+            if (!/^[a-zA-Z0-9_]+$/.test(values[0])) root.show(player);
+        };
         root.UserClosedProcessor = function(player) {
             ui_list.editor_menu(player);
         };

@@ -75,7 +75,7 @@ class ActionUI {
                     return;
             }
             this.UserCanceledProcessor(player);
-        });
+        }).catch(e => console.error("UI Error: ", e, e.stack));
     };
 }
 
@@ -93,10 +93,12 @@ class ModalUI {
     build() {
         const rootUI = this._rootUI;
         rootUI.title(raw(this.title));
-        rootUI.body(raw(this.message));
+        try {
+            rootUI.label(raw(this.message));
+        } catch {};
         rootUI.submitButton(raw(this.submitMessage));
-        for (const i of list) {
-            var args = i.splice(0);
+        for (const i of this.list) {
+            let args = i.slice(1);
             for (let j = 0; j < args.length; j ++) args[j] = raw(args[j]);
             rootUI[i[0]](...args);
         }
@@ -131,7 +133,7 @@ class ModalUI {
                     return;
             }
             this.UserCanceledProcessor(player);
-        });
+        }).catch(e => console.error("UI Error: ", e, e.stack));
     };
 }
 
@@ -215,7 +217,7 @@ class MultiPageUI {
                     return;
             }
             this.UserCanceledProcessor(player, pageIndex);
-        });
+        }).catch(e => console.error("UI Error: ", e, e.stack));
     }
 }
 
