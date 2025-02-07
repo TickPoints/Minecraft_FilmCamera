@@ -79,6 +79,57 @@ class ActionUI {
     };
 }
 
+class MessageUI {
+    constructor() {};
+    _rootUI = new MessageFormData();
+    UserCanceledProcessor() {};
+    UserBusyProcessor() {};
+    UserClosedProcessor() {};
+    title = "Unknown";
+    message = "Unknown";
+    list = [];
+    func = [];
+    build() {
+        const rootUI = this._rootUI;
+        rootUI.title(raw(this.title));
+        rootUI.body(raw(this.message));
+        rootUI.button1(raw(this.list[0]));
+        rootUI.button2(raw(this.list[1]));
+        return this;
+    };
+    preventBusy() {
+        this.UserBusyProcessor = function(player) {
+            this.show(player);
+        }
+        return this;
+    };
+    preventCanceled() {
+        this.UserCanceledProcessor = function(player) {
+            this.show(player);
+        }
+        return this;
+    };
+    show(player) {
+        const rootUI = this._rootUI;
+        return rootUI.show(player).then(response => {
+            if (!response.canceled) {
+                this.func[response.selection](player);
+            }
+            switch (response.cancelationReason) {
+                case "UserBusy":
+                    this.UserBusyProcessor(player);
+                    break;
+                case "UserClosed":
+                    this.UserClosedProcessor(player);
+                    break;
+                default:
+                    return;
+            }
+            this.UserCanceledProcessor(player);
+        }).catch(e => console.error("UI Error: ", e, e.stack));
+    };
+}
+
 class ModalUI {
     constructor() {};
     _rootUI = new ModalFormData();
@@ -120,7 +171,7 @@ class ModalUI {
         const rootUI = this._rootUI;
         return rootUI.show(player).then(response => {
             if (!response.canceled) {
-                this.func(response.formValues);
+                this.func(player, response.formValues);
             }
             switch (response.cancelationReason) {
                 case "UserBusy":
@@ -221,8 +272,26 @@ class MultiPageUI {
     }
 }
 
+function tip(player, message, next, back) {
+    const rootUI = new MessageUI();
+    rootUI.title = "TIP";
+    rootUI.message = message;
+    rootUI.list = [
+        "$filmcamera.scripts.ui.tip.next",
+        "$filmcamera.scripts.ui.tip.back"
+    ];
+    rootUI.func = [
+        next,
+        back
+    ];
+    rootUI.build();
+    rootUI.show(player);
+}
+
 export {
     ActionUI,
     MultiPageUI,
-    ModalUI
+    ModalUI,
+    MessageUI,
+    tip
 };
