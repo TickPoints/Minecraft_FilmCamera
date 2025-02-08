@@ -194,5 +194,43 @@ export const rule = {
             "needPermission": true,
             "description": "$filmcamera.scripts.command_system.help.commands.saveData"
         }
+    },
+    "edit": {
+        "type": "function",
+        "run": function(performer) {
+            import("../ui/ui_list.js").then(({
+                ui_list
+            }) => {
+                ui_list.editor_working(performer);
+            });
+        },
+        "config": {
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.edit"
+        }
+    },
+    "openProject": {
+        "type": "function",
+        "run": function(performer, ProjectName, ProjectType = "public") {
+            import("../controller/editor_monitor/docking_tool.js").then(({
+                openProject
+            }) => {
+                openProject(performer, {
+                    "name": ProjectName,
+                    "type": ProjectType
+                });
+            });
+        },
+        "config": {
+            "parameters": [{
+                "type": "string"
+            }, {
+                "type": "enumeration",
+                "enumeration": ["public", "private"],
+                "requirement": "select"
+            }],
+            "needPermission": true,
+            "description": "$filmcamera.scripts.command_system.help.commands.openProject"
+        }
     }
 };
