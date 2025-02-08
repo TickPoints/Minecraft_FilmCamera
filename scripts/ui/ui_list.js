@@ -1,8 +1,9 @@
-import * as ui from "./module.js";
 import {
     translate
 }
 from "../text/local.js";
+import * as ui from "./module.js";
+import * as dockingTool from "../controller/editor_monitor/docking_tool.js";
 
 export const ui_list = {
     "menu": function(player) {
@@ -39,12 +40,30 @@ export const ui_list = {
                 ui_list.editor_new_setName(player);
             },
             function(player) {
-                player.sendMessage("Working...");
+                ui_list.editor_project_open(player);
             },
             function(player) {
                 player.sendMessage("Working...");
             }
         ];
+        root.UserClosedProcessor = function(player) {
+            ui_list.menu(player);
+        };
+        root.build();
+        root.show(player);
+    },
+    "editor_project_open": function(player) {
+        const root = new ui.ActionUI();
+        root.title = "$filmcamera.scripts.ui.new.editor_project_open.title";
+        root.message = "$filmcamera.scripts.ui.new.editor_project_open.message";
+        const list = dockingTool.getOptionalProjectsList(player);
+        if (list == null) return;
+        root.list = list.name;
+        for (const project of list.raw) {
+            root.func.push(function(player) {
+                dockingTool.openProject(player, project);
+            });
+        }
         root.UserClosedProcessor = function(player) {
             ui_list.menu(player);
         };
@@ -85,7 +104,10 @@ export const ui_list = {
             ["dropdown", "$filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.label", [translate("filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.public"), translate("filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.private")]]
         ];
         root.func = function(player, values) {
-            //
+            dockingTool.initProject(player, {
+                "name": projectName,
+                "type": ["public", "private"][values[0]]
+            });
         };
         root.preventCanceled();
         root.build();
