@@ -26,7 +26,14 @@ export const ui_list = {
         root.build();
         root.show(player);
     },
+    "editor_working": function(player) {
+        player.sendMessage("Working...");
+    },
     "editor_menu": function(player) {
+        if (dockingTool.isProjectEditing(player)) {
+            ui_list.editor_working(player);
+            return;
+        }
         const root = new ui.ActionUI();
         root.title = "$filmcamera.scripts.ui.new.editor_menu.title";
         root.message = "$filmcamera.scripts.ui.new.editor_menu.message";
@@ -62,6 +69,7 @@ export const ui_list = {
         for (const project of list.raw) {
             root.func.push(function(player) {
                 dockingTool.openProject(player, project);
+                ui_list.editor_working(player);
             });
         }
         root.UserClosedProcessor = function(player) {
