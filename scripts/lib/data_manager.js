@@ -9,16 +9,19 @@ import {
 from "./lz-string.js"
 
 const BLOCK_LENGTH = 1000;
-const SAVE_INTERVAL = 5 * 60 * 20;
+const SAVE_INTERVAL = 2 * 60 * 20;
 
-const DataObject = {
+var DataObject = {
     "World": {},
     "Player": {}
 };
 
 function getDataManager(target = ServerWorld) {
-    if (target === ServerWorld) return DataObject.World;
-    return DataObject.Player[target.name];
+    if (target === ServerWorld) {
+        return DataObject.World;
+    } else {
+        return DataObject.Player[target.name];
+    }
 }
 
 function readDataOnDynamicProperty(target) {
@@ -88,8 +91,6 @@ ServerWorld.afterEvents.playerSpawn.subscribe(eventData => {
     const player = eventData.player;
     DataObject.Player[player.name] = readDataOnDynamicProperty(player);
     if (JSON.stringify(DataObject.Player[player.name]) == "{}") DataObject.Player[player.name] = playerDataInit();
-    // Debug:
-    // DataObject.Player[player.name] = playerDataInit();
     pretreatmentPlayerData(player.name);
 });
 
@@ -98,19 +99,23 @@ function WorldLoad() {
     if (JSON.stringify(DataObject.World) == "{}") DataObject.World = worldDataInit();
     // Debug:
     DataObject.World = worldDataInit();
+    for (const player of ServerWorld.getAllPlayers()) {
+        DataObject.Player[player.name] = playerDataInit();
+    }
+    
     pretreatmentWorldData();
     ServerSystem.runInterval(saveData, SAVE_INTERVAL);
 }
 
-var worldDataInit = function () {
+var worldDataInit = function() {
     return {};
 };
-var playerDataInit = function () {
+var playerDataInit = function() {
     return {};
 };
 
 try {
-    ServerWorld.afterEvents.worldInitialize.subscribe(WorldLoad);   // remove at @minecraft/server 2.0.0
+    ServerWorld.afterEvents.worldInitialize.subscribe(WorldLoad); // remove at @minecraft/server 2.0.0
 } catch {
     ServerWorld.afterEvents.worldLoad.subscribe(WorldLoad);
 }

@@ -23,7 +23,7 @@ import {
 function configureParser(config, parameters, performer) {
     if (config.needPermission === true) {
         if (!performer.hasTag("camera_editor")) {
-            printError(performer, "filmcamera.scripts.command_system.error.no_permission");
+            printError(performer, "filmcamera.scripts.no_permission");
             return -1;
         }
     }
