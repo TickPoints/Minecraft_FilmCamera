@@ -1,7 +1,8 @@
 import {
     writeWorldDataInit,
     writePlayerDataInit,
-    addDataPreprocessor
+    addDataPreprocessor,
+    getDataManager
 }
 from "../../lib/data_manager.js";
 
@@ -14,7 +15,7 @@ const InitMap = {
     },
     "Player": {
         "projects": {},
-        "editing_status": false
+        "current_project": null
     }
 }
 
