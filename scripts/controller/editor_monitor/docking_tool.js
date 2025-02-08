@@ -22,8 +22,7 @@ function hasPermission(player) {
 
 function isProjectEditing(player) {
     const playerData = getDataManager(player);
-    if (playerData.current_project !== null) {
-        print_to_player(player, translate("filmcamera.scripts.editor.project.cannot_open.project_already_opend", project.name, playerData.current_project.name), "$filmcamera.scripts.editor.meta.source_id", "ERROR");
+    if (playerData.current_project != null) {
         return true;
     }
     return false;
@@ -34,19 +33,22 @@ function openProject(player, project) {
         console.error("The project data provided is incorrect!");
         return;
     }
-    if (isProjectEditing(player)) return;
+    const playerData = getDataManager(player);
+    if (isProjectEditing(player)) {
+        print_to_player(player, translate("filmcamera.scripts.editor.project.cannot_open.project_already_opend", playerData.current_project.name, project.name), "$filmcamera.scripts.editor.meta.source_id", "ERROR");
+        return;
+    }
     switch (project.type) {
         case "public":
             const worldData = getDataManager(ServerWorld);
             if (typeof worldData.projects[project.name] === "undefined") {
-                print_to_player(player, translate("filmcamera.scripts.editor.project.cannot_open.not_exist", name, playerData.current_project), "$filmcamera.scripts.editor.meta.source_id", "ERROR");
+                print_to_player(player, translate("filmcamera.scripts.editor.project.cannot_open.not_exist", player.name, playerData.current_project), "$filmcamera.scripts.editor.meta.source_id", "ERROR");
                 return;
             }
             break;
         case "private":
-            const playerData = getDataManager(player);
             if (typeof playerData.projects[project.name] === "undefined") {
-                print_to_player(player, translate("filmcamera.scripts.editor.project.cannot_open.not_exist", name, playerData.current_project), "$filmcamera.scripts.editor.meta.source_id", "ERROR");
+                print_to_player(player, translate("filmcamera.scripts.editor.project.cannot_open.not_exist", player.name, playerData.current_project), "$filmcamera.scripts.editor.meta.source_id", "ERROR");
                 return;
             }
             break;
