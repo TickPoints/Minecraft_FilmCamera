@@ -3,13 +3,23 @@
 ## 注：翻译内容不一定准确  
 
 ## 脚本内容
+filmcamera.scripts.no_permission=§c您尚未获得有效权限，请向管理员申请。
+### 编辑器
+#### 元数据
+##### 来源ID
+filmcamera.scripts.editor.meta.source_id=编辑器
+#### 项目
+filmcamera.scripts.editor.project.opendMessage=§b项目 %s 已成功打开！
+filmcamera.scripts.editor.project.init.success=§b项目构建成功。
+filmcamera.scripts.editor.project.cannot_open.project_already_opend=§c当前仍在编辑 %1 项目，不可以打开 %2 项目。
+filmcamera.scripts.editor.project.cannot_open.no_optional_projects=§c没有可打开的项目。
+filmcamera.scripts.editor.project.cannot_open.not_exist=§c当前项目未找到。
 ### 命令系统
 #### 元数据
 ##### 来源ID
 filmcamera.scripts.command_system.meta.source_id.main=命令系统
 filmcamera.scripts.command_system.meta.source_id.configureParser=命令系统-配置解析器
 #### 报错
-filmcamera.scripts.command_system.error.no_permission=§c您尚未获得有效权限，请向管理员申请。
 filmcamera.scripts.command_system.error.parameter_missing=§c参数[%s]缺失。
 filmcamera.scripts.command_system.error.input_type_error=§c意外的 %1 出现在 %2 >> %1 << %3 间，它应该为 %4 类型。
 filmcamera.scripts.command_system.error.input_type_error_with_enumeration=§c意外的 %1 出现在 %2 >> %1 << %3 间，它应该为 Enums 类型，且只能为[ %4 ]中的一个。
@@ -38,6 +48,8 @@ filmcamera.scripts.ui.new.editor_menu.message=使用编辑器构建、导出、�
 filmcamera.scripts.ui.new.editor_menu.button1=新建项目
 filmcamera.scripts.ui.new.editor_menu.button2=打开项目
 filmcamera.scripts.ui.new.editor_menu.button3=编辑器设置
+filmcamera.scripts.ui.new.editor_project_open.title=打开项目
+filmcamera.scripts.ui.new.editor_project_open.message=在个人的私有项目中打开项目以编辑。(如果需要打开公有项目，在有权限的情况下使用 !openPublicProject [项目名称])
 filmcamera.scripts.ui.new.editor_new.title=新建项目
 filmcamera.scripts.ui.new.editor_new_setName.message=为项目定义名称(仅包含英文字母、数字和下划线)
 filmcamera.scripts.ui.new.editor_new_setName.nameInput.label=名称(仅包含英文字母、数字和下划线，错误将重新启动输入)

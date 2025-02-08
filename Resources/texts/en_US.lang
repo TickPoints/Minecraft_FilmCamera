@@ -3,13 +3,23 @@
 ## Note: Translations may not be accurate
 
 ## Script content
+filmcamera.scripts.no_permission=§cYou have not yet been granted valid permissions, please apply to an administrator.
+### Editor
+#### Metadata
+##### Source ID
+filmcamera.scripts.editor.meta.source_id=Editor
+#### Projects
+filmcamera.scripts.editor.project.opendMessage=§bProject %s opened successfully!
+filmcamera.scripts.editor.project.init.success=§bProject inited successfully!
+filmcamera.scripts.editor.project.cannot_open.project_already_opend=§cThe %1 project is currently still edited. So the %2 project cannot be opened.
+filmcamera.scripts.editor.project.cannot_open.no_optional_projects=§cThere are no projects to open.
+filmcamera.scripts.editor.project.cannot_open.not_exist=§cThe current project was not found.
 ### Command System
 #### Metadata
 ##### Source ID
 filmcamera.scripts.command_system.meta.source_id.main=Command System
 filmcamera.scripts.command_system.meta.source_id.configureParser=Command System-Configuration Parser
 #### Report Error
-filmcamera.scripts.command_system.error.no_permission=§cYou have not yet been granted valid permissions, please apply to an administrator.
 filmcamera.scripts.command_system.error.parameter_missing=§cThe parameter [%s] is missing.
 filmcamera.scripts.command_system.error.input_type_error=§cThe unexpected %1 occurs between %2 >> %1 << %3, which should be of type %4.
 filmcamera.scripts.command_system.error.input_type_error_with_enumeration=§cThe unexpected %1 occurs between %2 >> %1 << %3, which should be of type Enums and can only be one of [ %4 ].
@@ -38,6 +48,8 @@ filmcamera.scripts.ui.new.editor_menu.message=Use the editor to build, export, m
 filmcamera.scripts.ui.new.editor_menu.button1=New
 filmcamera.scripts.ui.new.editor_menu.button2=Open
 filmcamera.scripts.ui.new.editor_menu.button3=Setting
+filmcamera.scripts.ui.new.editor_project_open.title=Open Project
+filmcamera.scripts.ui.new.editor_project_open.message=Open the project in own personal project for editing.(If need to open public project，please use "!openPublicProject [ProjectName]" with permission)
 filmcamera.scripts.ui.new.editor_new.title=New Project
 filmcamera.scripts.ui.new.editor_new_setName.message=Name for the project(Contains only English letters, numbers, and underscores)
 filmcamera.scripts.ui.new.editor_new_setName.nameInput.label=Name(Contains only English letters, numbers, and underscores, errors will restart the input)
