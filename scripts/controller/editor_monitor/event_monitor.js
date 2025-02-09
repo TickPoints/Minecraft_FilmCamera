@@ -3,7 +3,7 @@ import {
 }
 from "@minecraft/server";
 import {
-    print_to_player
+    printToPlayer
 }
 from "../../text/print.js";
 import {
