@@ -166,6 +166,13 @@ function getCurrentPlayerData(player) {
     return getDataManager(player);
 }
 
+function addScene(player) {
+    const projectData = getCurrentProjectData(player);
+    projectData.scenes.push({
+        "frames": []
+    });
+}
+
 export {
     openProject,
     getOptionalProjectsList,
@@ -175,5 +182,6 @@ export {
     getCurrentProjectMeta,
     hasPermission,
     getCurrentWorldData,
-    getCurrentPlayerData
+    getCurrentPlayerData,
+    addScene
 };
