@@ -8,13 +8,26 @@ import {
 }
 from "./lz-string.js"
 
+"use strict";
+
 const BLOCK_LENGTH = 1000;
 const SAVE_INTERVAL = 2 * 60 * 20;
 
-var DataObject = {
-    "World": {},
-    "Player": {}
-};
+function mergeData(oldObj, newObj) {
+    for (const i of Object.keys(newObj)) {
+        Object.defineProperty(oldObj, i, {
+            value: newObj[i],
+            writable: false,
+            enumerable: true,
+            configurable: true
+        });
+    }
+}
+
+const DataObject = {
+    World: {},
+    Player: {}
+}
 
 function getDataManager(target = ServerWorld) {
     if (target === ServerWorld) {
@@ -27,6 +40,7 @@ function getDataManager(target = ServerWorld) {
 function readDataOnDynamicProperty(target) {
     const quantity = target.getDynamicProperty("data_space_quantity");
     if (typeof quantity !== "number") return {};
+    if (quantity === 0) return {};
     let value = "";
     for (let i = 1; i <= quantity; i++) {
         const currentValue = target.getDynamicProperty(`data_space_${i}`);
@@ -69,48 +83,28 @@ function writePlayerDataInit(func) {
     playerDataInit = func;
 }
 
-var player_data_preprocessor = [];
-var world_data_preprocessor = [];
-
-function addDataPreprocessor(func, type) {
-    switch (type) {
-        case "player":
-            player_data_preprocessor.push(func);
-            break;
-        case "world":
-            world_data_preprocessor(func);
-            break;
-        default:
-            return;
-    }
-}
-
 // Monitor
 ServerWorld.afterEvents.playerSpawn.subscribe(eventData => {
     if (!eventData.initialSpawn) return;
     const player = eventData.player;
     DataObject.Player[player.name] = readDataOnDynamicProperty(player);
-    if (JSON.stringify(DataObject.Player[player.name]) == "{}") DataObject.Player[player.name] = playerDataInit();
-    pretreatmentPlayerData(player.name);
+    if (JSON.stringify(DataObject.Player[player.name]) == "{}") mergeData(DataObject.Player[player.name], playerDataInit());
 });
 
 function WorldLoad() {
-    DataObject.World = readDataOnDynamicProperty(ServerWorld);
-    if (JSON.stringify(DataObject.World) == "{}") DataObject.World = worldDataInit();
-    // Debug:
-    DataObject.World = worldDataInit();
+    mergeData(DataObject.World, readDataOnDynamicProperty(ServerWorld));
+    if (JSON.stringify(DataObject.World) == "{}") mergeData(DataObject.World, worldDataInit());
     for (const player of ServerWorld.getAllPlayers()) {
-        DataObject.Player[player.name] = playerDataInit();
+        DataObject.Player[player.name] = readDataOnDynamicProperty(player);
+        if (JSON.stringify(DataObject.Player[player.name]) == "{}") mergeData(DataObject.Player[player.name], playerDataInit());
     }
-    
-    pretreatmentWorldData();
     ServerSystem.runInterval(saveData, SAVE_INTERVAL);
 }
 
-var worldDataInit = function() {
+let worldDataInit = function() {
     return {};
 };
-var playerDataInit = function() {
+let playerDataInit = function() {
     return {};
 };
 
@@ -121,17 +115,16 @@ try {
 }
 
 function pretreatmentWorldData() {
-    for (const i of world_data_preprocessor) DataObject.World = i(DataObject.World);
+    for (const i of world_data_preprocessor) mergeData(DataObject.World, i(DataObject.World));
 }
 
 function pretreatmentPlayerData(name) {
-    for (const i of player_data_preprocessor) DataObject.Player[name] = i(DataObject.Player[name]);
+    for (const i of player_data_preprocessor) mergeData(DataObject.Player[name], DataObject.Player[name]);
 }
 
 export {
     getDataManager,
     saveData,
     writeWorldDataInit,
-    writePlayerDataInit,
-    addDataPreprocessor
+    writePlayerDataInit
 };
