@@ -3,14 +3,14 @@ import {
 } from "@minecraft/server";
 // Error Output Tool Definition
 import {
-    print_to_player
+    printToPlayer
 } from "../text/print.js";
 import {
     translate
 } from "../text/local.js";
 
 function printError(target, text, ...withData) {
-    print_to_player(target, translate(text, ...withData), "$filmcamera.scripts.command_system.meta.source_id.configureParser", "ERROR");
+    printToPlayer(target, translate(text, ...withData), "$filmcamera.scripts.command_system.meta.source_id.configureParser", "ERROR");
     return null;
 }
 
@@ -113,7 +113,9 @@ export const type_map = {
         }
         try {
             return JSON.parse(value);
-        } catch {}
+        } catch {
+            // empty
+        }
         return undefined;
     },
     "command_name": function(performer, parameters, i, other) {

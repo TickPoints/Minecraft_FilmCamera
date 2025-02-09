@@ -3,14 +3,14 @@ import {
 } from "@minecraft/server";
 // Error Output Tool Definition
 import {
-    print_to_player
+    printToPlayer
 } from "../text/print.js";
 import {
     translate
 } from "../text/local.js";
 
 function printError(target, text, ...withData) {
-    print_to_player(target, translate(text, ...withData), "$filmcamera.scripts.command_system.meta.source_id.main", "ERROR");
+    printToPlayer(target, translate(text, ...withData), "$filmcamera.scripts.command_system.meta.source_id.main", "ERROR");
 }
 
 import {
@@ -30,7 +30,7 @@ function configureParser(config, parameters, performer) {
     // Parameter Restriction Section
     if (config.parameters === undefined) return;
     const configLength = config.parameters.length;
-    for (let param_index = 0; param_index < configLength; param_index ++) {
+    for (let param_index = 0; param_index < configLength; param_index++) {
         const param = config.parameters[param_index];
         const requirement = param.requirement;
         if (parameters[param_index] === undefined) {
@@ -64,7 +64,7 @@ function run(command, performer = ServerWorld) {
             return;
         }
         switch (entry.type) {
-            case "function":
+            case "function": {
                 const parameters = command.slice(i + 1);
                 const fun = entry.run;
                 const config = entry.config;
@@ -78,10 +78,12 @@ function run(command, performer = ServerWorld) {
                     printError(performer, "filmcamera.scripts.command_system.error.command_work_error", `${e}${e.stack}`);
                 }
                 break;
-            case "subcommand":
+            }
+            case "subcommand": {
                 entry = entry.subcommand[command[i + 1]];
                 break;
-            case "copy":
+            }
+            case "copy": {
                 const fromValue = entry.from;
                 let copyBit = rule;
                 const parts = fromValue.split(".");
@@ -95,9 +97,11 @@ function run(command, performer = ServerWorld) {
                 command.splice(i, 0, command[i]);
                 entry = copyBit;
                 break;
-            default:
+            }
+            default: {
                 console.error("The command takes the wrong entry type.");
                 return;
+            }
         }
     }
 }

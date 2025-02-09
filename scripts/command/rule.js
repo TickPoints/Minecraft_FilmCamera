@@ -31,14 +31,16 @@ export const rule = {
             let returnValue;
             if (dimension === null) dimension = performer.dimension.id;
             switch (type) {
-                case "self":
+                case "self": {
                     returnValue = performer;
                     break;
-                case "target":
+                }
+                case "target": {
                     returnValue = ServerWorld.getDimension(dimension)
                         .getEntities(options)[0];
                     break;
-                case "player":
+                }
+                case "player": {
                     options = {
                         "type": "minecraft:player"
                     };
@@ -56,8 +58,10 @@ export const rule = {
                     const minIndex = players.indexOf(Math.min(...players));
                     returnValue = returnValue[minIndex];
                     break;
-                default:
+                }
+                default: {
                     return null;
+                }
             };
             return returnValue.id;
         },
@@ -114,7 +118,6 @@ export const rule = {
     "getEntities": {
         "type": "function",
         "run": function(performer, options, dimension = null) {
-            let returnValue;
             if (dimension === null) dimension = performer.dimension.id;
             var entities = [];
             for (const i of ServerWorld.getDimension(dimension).getEntities(options)) entities.push(i.id);
@@ -183,7 +186,7 @@ export const rule = {
     },
     "saveData": {
         "type": "function",
-        "run": function(_performer) {
+        "run": function() {
             import("../lib/data_manager.js").then(({
                 saveData
             }) => {
