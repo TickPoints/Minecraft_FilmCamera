@@ -1,5 +1,6 @@
 import {
-    translate
+    translate,
+    raw
 }
 from "../text/local.js";
 import * as ui from "./module.js";
@@ -19,15 +20,80 @@ export const ui_list = {
                 ui_list.editor_menu(player);
             },
             function(player) {
-                player.sendMessage("Working...");
+                ui_list.setting_menu(player);
             }
         ];
         root.preventBusy();
         root.build();
         root.show(player);
     },
+    "setting_menu": function(player) {
+        const root = new ui.ActionUI();
+        root.title = "$filmcamera.scripts.ui.new.setting_menu.title";
+        root.message = "$filmcamera.scripts.ui.new.setting_menu.message";
+        root.list = [
+            "Debug"
+        ];
+        root.func = [
+            function(player) {
+                ui_list.debug_page(player);
+            }
+        ];
+        root.UserClosedProcessor = function(player) {
+            ui_list.menu(player);
+        };
+        root.build();
+        root.show(player);
+    },
+    "debug_page": function(player) {
+        const root = new ui.ModalUI();
+        root.title = "DEBUG";
+        root.message = "For checking data to debug.";
+        const CurrentWorldData = dockingTool.getCurrentWorldData(player);
+        const PlayerWorldData = dockingTool.getCurrentPlayerData(player);
+        if (!CurrentWorldData) return;
+        root.list = [
+            ["textField", "WorldData", "Current WorldData", `#${JSON.stringify(CurrentWorldData)}`],
+            ["textField", "ThisPlayerData", "Current PlayerData", `#${JSON.stringify(PlayerWorldData)}`]
+        ];
+        root.func = function(player, values) {
+            // empty
+        };
+        root.UserClosedProcessor = function(player) {
+            ui_list.setting_menu(player);
+        };
+        root.build();
+        root.show(player);
+    },
     "editor_working": function(player) {
-        player.sendMessage("Working...");
+        const root = new ui.ActionUI();
+        const projectData = dockingTool.getCurrentProjectData(player);
+        if (projectData == null) return;
+        const projectMeta = dockingTool.getCurrentProjectMeta(player);
+        root.title = "$filmcamera.scripts.ui.new.editor_working.title";
+        root.message = translate("filmcamera.scripts.ui.new.editor_working.message", projectMeta.name, projectMeta.type, projectMeta.source);
+        root.list = [
+            "$filmcamera.scripts.ui.new.editor_working.button1",
+            "$filmcamera.scripts.ui.new.editor_working.button2"
+        ];
+        for (const scene of Object.keys(projectData.scenes)) {
+            root.list.push(scene);
+        }
+        root.func = [
+            function(player) {
+                player.sendMessage("Working...");
+            },
+            function(player) {
+                player.sendMessage("Working...");
+            }
+        ];
+        for (const scene of Object.keys(projectData.scenes)) {
+            root.func.push(function (player) {
+                player.sendMessage("Working...");
+            });
+        }
+        root.build();
+        root.show(player);
     },
     "editor_menu": function(player) {
         if (dockingTool.isProjectEditing(player)) {

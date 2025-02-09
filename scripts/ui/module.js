@@ -146,7 +146,9 @@ class ModalUI {
         rootUI.title(raw(this.title));
         try {
             rootUI.label(raw(this.message));
-        } catch {};
+        } catch {
+            // empty
+        };
         rootUI.submitButton(raw(this.submitMessage));
         for (const i of this.list) {
             let args = i.slice(1);
