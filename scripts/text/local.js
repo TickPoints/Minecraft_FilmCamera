@@ -18,9 +18,13 @@ function translate(text, ...withData) {
 function raw(text) {
     if (typeof text !== "string") return text;
     if (text[0] === "$") return translate(text.substring(1));
-    else return {
-        "text": text
-    };
+    else if (text[0] === "#") {
+        return text.substring(1);
+    } else {
+        return {
+            "text": text
+        };
+    }
 }
 
 export {

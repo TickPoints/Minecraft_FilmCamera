@@ -27,7 +27,7 @@ function print(text, source = "FilmCamera", type = "INFO") {
     });
 }
 
-function print_to_player(player, text, source = "FilmCamera", type = "INFO") {
+function printToPlayer(player, text, source = "FilmCamera", type = "INFO") {
     player.sendMessage({
         "rawtext": [{
             "text": "["
@@ -49,5 +49,5 @@ function print_to_player(player, text, source = "FilmCamera", type = "INFO") {
 
 export {
     print,
-    print_to_player
+    printToPlayer
 };
