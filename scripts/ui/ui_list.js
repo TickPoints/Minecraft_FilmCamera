@@ -62,6 +62,7 @@ export const ui_list = {
         root.UserClosedProcessor = function(player) {
             ui_list.setting_menu(player);
         };
+        root.preventBusy();
         root.build();
         root.show(player);
     },
@@ -76,15 +77,16 @@ export const ui_list = {
             "$filmcamera.scripts.ui.new.editor_working.button1",
             "$filmcamera.scripts.ui.new.editor_working.button2"
         ];
-        for (const scene of Object.keys(projectData.scenes)) {
-            root.list.push(scene);
+        for (let i = 1; i <= projectData.scenes.length; i ++) {
+            root.list.push(`Scene [${i}]`);
         }
         root.func = [
             function(player) {
                 player.sendMessage("Working...");
             },
             function(player) {
-                player.sendMessage("Working...");
+                dockingTool.addScene(player);
+                ui_list.editor_working(player);
             }
         ];
         for (const scene of Object.keys(projectData.scenes)) {
@@ -92,6 +94,7 @@ export const ui_list = {
                 player.sendMessage("Working...");
             });
         }
+        root.preventBusy();
         root.build();
         root.show(player);
     },
