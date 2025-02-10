@@ -102,7 +102,9 @@ function initProject(player, projectConfig) {
     var projectData = {
         "scenes": [],
         "scenes_composer": [],
-        "config": {}
+        "config": {
+            "name": null
+        }
     };
     const playerData = getDataManager(player);
     switch (projectConfig.type) {
@@ -173,6 +175,12 @@ function addScene(player) {
     });
 }
 
+function removeScene(player, index) {
+    const projectData = getCurrentProjectData(player);
+    projectData.scenes[index].splice(index, 1);
+    projectData.scenes_composer[index].splice(index, 1);
+}
+
 export {
     openProject,
     getOptionalProjectsList,
@@ -183,5 +191,6 @@ export {
     hasPermission,
     getCurrentWorldData,
     getCurrentPlayerData,
-    addScene
+    addScene,
+    removeScene
 };
