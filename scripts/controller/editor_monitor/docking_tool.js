@@ -15,6 +15,10 @@ import {
     getDataManager
 }
 from "../../lib/data_manager.js";
+import {
+    operator_meta_map
+}
+from "../maps/operator_map.js";
 
 const worldData = getDataManager(ServerWorld);
 
@@ -23,15 +27,14 @@ function hasPermission(player) {
 }
 
 function isProjectEditing(player) {
-    const playerData = getDataManager(player);
-    if (playerData.current_project != null) {
-        return true;
-    }
-    return false;
+    const {
+        current_project
+    } = getDataManager(player);
+    return current_project != null;
 }
 
 function openProject(player, project) {
-    if (project.name == undefined || project.type == undefined) {
+    if (!Object.keys(project).includes('name') || !Object.keys(project).includes('type')) {
         console.error("The project data provided is incorrect!");
         return;
     }
@@ -114,17 +117,14 @@ function getCurrentProjectData(player) {
         printToPlayer(player, translate("filmcamera.scripts.editor.project.not_opend"), "$filmcamera.scripts.editor.meta.source_id", "ERROR");
         return null;
     }
-    const playerData = getDataManager(player);
-    const current_project = playerData.current_project;
-    switch (current_project.type) {
-        case "public":
-            return worldData.projects[current_project.name];
-        case "private":
-            return playerData.projects[current_project.name];
-            break;
-        default:
-            return null;
-    }
+    const {
+        current_project
+    } = getDataManager(player);
+    const {
+        type,
+        name
+    } = current_project;
+    return type === "public" ? worldData.projects[name] : playerData.projects[name];
 }
 
 function getCurrentProjectMeta(player) {
@@ -138,14 +138,6 @@ function getCurrentWorldData(player) {
         return;
     }
     return getDataManager(ServerWorld);
-}
-
-function getCurrentPlayerData(player) {
-    if (!hasPermission(player)) {
-        console.error("You cannot access the current world data without permission!");
-        return;
-    }
-    return getDataManager(player);
 }
 
 function addScene(player) {
@@ -172,5 +164,6 @@ export {
     getCurrentWorldData,
     getCurrentPlayerData,
     addScene,
-    removeScene
+    removeScene,
+    operator_meta_map as OptionalOperator
 };
