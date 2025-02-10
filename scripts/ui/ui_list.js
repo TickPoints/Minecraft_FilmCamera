@@ -77,7 +77,7 @@ export const ui_list = {
             "$filmcamera.scripts.ui.new.editor_working.button1",
             "$filmcamera.scripts.ui.new.editor_working.button2"
         ];
-        for (let i = 1; i <= projectData.scenes.length; i ++) {
+        for (let i = 1; i <= projectData.scenes.length; i++) {
             root.list.push(`Scene [${i}]`);
         }
         root.func = [
@@ -89,12 +89,48 @@ export const ui_list = {
                 ui_list.editor_working(player);
             }
         ];
-        for (const scene of Object.keys(projectData.scenes)) {
-            root.func.push(function (player) {
-                player.sendMessage("Working...");
+        for (let i = 0; i < projectData.scenes.length; i++) {
+            root.func.push(function(player) {
+                ui_list.editor_working_scene(player, projectData.scenes, i);
             });
         }
         root.preventBusy();
+        root.build();
+        root.show(player);
+    },
+    "editor_working_scene": function(player, scenes, index) {
+        const frames = scenes[index].frames;
+        const root = new ui.ActionUI();
+        root.title = "$filmcamera.scripts.ui.new.editor_working_scene.title";
+        root.message = "$filmcamera.scripts.ui.new.editor_working_scene.message";
+        root.list = [
+            "$filmcamera.scripts.ui.new.editor_working_scene.button1",
+            "$filmcamera.scripts.ui.new.editor_working_scene.button2"
+        ];
+        for (let i = 1; i <= frames.length; i++) {
+            root.list.push(`Frame [${i}]`);
+        }
+        root.func = [
+            function(player) {
+                dockingTool.removeScene(player, index);
+                ui_list.editor_working(player);
+            },
+            function(player) {
+                frames.push({
+                    "operator": "",
+                    "args": []
+                });
+                ui_list.editor_working_scene(player, scenes, index);
+            }
+        ];
+        for (let i = 0; i < frames.length; i++) {
+            root.func.push(function(player) {
+                //
+            });
+        }
+        root.UserClosedProcessor = function(player) {
+            ui_list.editor_working(player);
+        };
         root.build();
         root.show(player);
     },
