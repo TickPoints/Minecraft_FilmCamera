@@ -59,10 +59,10 @@ function openProject(player, project) {
     }
     playerData.current_project = {
         "type": project.type,
-        "source": player.name ? player.name : undefined,
+        "source": project.type === "private" ? player.name : undefined,
         "name": project.name
     };
-    printToPlayer(player, translate("filmcamera.scripts.editor.project.opendMessage", name), "$filmcamera.scripts.editor.meta.source_id");
+    printToPlayer(player, translate("filmcamera.scripts.editor.project.opendMessage", project.name), "$filmcamera.scripts.editor.meta.source_id");
 }
 
 function getOptionalProjectsList(player) {
