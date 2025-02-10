@@ -157,8 +157,8 @@ function addScene(player) {
 
 function removeScene(player, index) {
     const projectData = getCurrentProjectData(player);
-    projectData.scenes[index].splice(index, 1);
-    projectData.scenes_composer[index].splice(index, 1);
+    projectData.scenes.splice(index, 1);
+    projectData.scenes_composer.splice(index, 1);
 }
 
 export {
