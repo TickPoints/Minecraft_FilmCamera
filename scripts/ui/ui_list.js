@@ -112,8 +112,12 @@ export const ui_list = {
         }
         root.func = [
             function(player) {
-                dockingTool.removeScene(player, index);
-                ui_list.editor_working(player);
+                ui.tip(player, "$filmcamera.scripts.ui.new.editor_working_scene.tip", function(player) {
+                    dockingTool.removeScene(player, index);
+                    ui_list.editor_working(player);
+                }, function(player) {
+                    ui_list.editor_working_scene(player);
+                });
             },
             function(player) {
                 frames.push({
@@ -125,7 +129,12 @@ export const ui_list = {
         ];
         for (let i = 0; i < frames.length; i++) {
             root.func.push(function(player) {
-                //
+                ui_list.editor_working_frame(player, {
+                    frames,
+                    frameIndex: i,
+                    scenes,
+                    sceneIndex: index
+                });
             });
         }
         root.UserClosedProcessor = function(player) {
@@ -133,6 +142,53 @@ export const ui_list = {
         };
         root.build();
         root.show(player);
+    },
+    "editor_working_frame": function(player, data) {
+        const root = new ui.ActionUI();
+        root.title = "$filmcamera.scripts.ui.new.editor_working_frame.title";
+        root.message = "$filmcamera.scripts.ui.new.editor_working_frame.message";
+        root.list = [
+            "$filmcamera.scripts.ui.new.editor_working_frame.button1",
+            "$filmcamera.scripts.ui.new.editor_working_frame.button2"
+        ];
+        root.func = [
+            function(player) {
+                ui.tip(player, "$filmcamera.scripts.ui.new.editor_working_frame.tip", function(player) {
+                    data.frames.splice(data.frameIndex, 1);
+                    ui_list.editor_working_scene(player, data.scenes, data.sceneIndex);
+                }, function(player) {
+                    ui_list.editor_working_frame(player);
+                });
+            },
+            function(player) {
+                ui_list.editor_working_choose_operator(player, data.frames[data.frameIndex], data);
+            }
+        ];
+        root.UserClosedProcessor = function(player) {
+            ui_list.editor_working_scene(player);
+        };
+        root.build();
+        root.show(player);
+    },
+    "editor_working_choose_operator": function(player, frame, _data) {
+        const root = new ui.ActionUI;
+        root.title = "$filmcamera.scripts.ui.new.editor_working_choose_operator.title";
+        root.message = translate("filmcamera.scripts.ui.new.editor_working_choose_operator.message", frame.operator ? frame.operator : "None", frame.args ? frame.args.toString() : "None");
+        root.list = dockingTool.OptionalOperator.translate;
+        for (const i of dockingTool.OptionalOperator.root) {
+            root.func.push(function(player) {
+                frame.operator = i.id;
+                ui_list.editor_working_edit_args(player, i.ui);
+            });
+        }
+        root.UserClosedProcessor = function(player) {
+            ui_list.editor_working_frame(player, _data);
+        };
+        root.build();
+        root.show(player);
+    },
+    "editor_working_edit_args": function(player) {
+        //
     },
     "editor_menu": function(player) {
         if (dockingTool.isProjectEditing(player)) {
