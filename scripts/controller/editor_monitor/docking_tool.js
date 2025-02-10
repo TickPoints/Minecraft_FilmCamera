@@ -59,7 +59,7 @@ function openProject(player, project) {
     }
     playerData.current_project = {
         "type": project.type,
-        "source": project.type ? player.name : undefined,
+        "source": player.name ? player.name : undefined,
         "name": project.name
     };
     printToPlayer(player, translate("filmcamera.scripts.editor.project.opendMessage", name), "$filmcamera.scripts.editor.meta.source_id");
@@ -102,30 +102,10 @@ function initProject(player, projectConfig) {
     var projectData = {
         "scenes": [],
         "scenes_composer": [],
-        "config": {
-            "name": null
-        }
+        "config": {}
     };
     const playerData = getDataManager(player);
-    switch (projectConfig.type) {
-        case "public":
-            worldData.projects[projectConfig.name] = projectData;
-            playerData.current_project = {
-                type: "public",
-                name: projectConfig.name
-            };
-            break;
-        case "private":
-            playerData.projects[projectConfig.name] = projectData;
-            playerData.current_project = {
-                type: "private",
-                name: projectConfig.name,
-                source: player.name
-            };
-            break;
-        default:
-            return;
-    }
+    openProject(player, projectConfig);
     printToPlayer(player, translate("filmcamera.scripts.editor.project.init.success"), "$filmcamera.scripts.editor.meta.source_id");
 }
 

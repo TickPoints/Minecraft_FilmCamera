@@ -17,7 +17,7 @@ function mergeData(oldObj, newObj) {
     for (const i of Object.keys(newObj)) {
         Object.defineProperty(oldObj, i, {
             value: newObj[i],
-            writable: false,
+            writable: true,
             enumerable: true,
             configurable: true
         });
