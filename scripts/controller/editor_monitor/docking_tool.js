@@ -18,7 +18,7 @@ from "../../lib/data_manager.js";
 import {
     operator_meta_map
 }
-from "../maps/operator_map.js";
+from "../maps/operator_meta_map.js";
 
 const worldData = getDataManager(ServerWorld);
 
@@ -138,6 +138,14 @@ function getCurrentWorldData(player) {
         return;
     }
     return getDataManager(ServerWorld);
+}
+
+function getCurrentPlayerData(player) {
+    if (!hasPermission(player)) {
+        console.error("You cannot access the current world data without permission!");
+        return;
+    }
+    return getDataManager(player);
 }
 
 function addScene(player) {
