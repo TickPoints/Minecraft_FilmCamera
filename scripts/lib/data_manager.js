@@ -6,7 +6,7 @@ from "@minecraft/server";
 import {
     LZString
 }
-from "./lz-string.js"
+from "./lz-string.js";
 
 "use strict";
 
@@ -91,6 +91,10 @@ ServerWorld.afterEvents.playerSpawn.subscribe(eventData => {
     if (JSON.stringify(DataObject.Player[player.name]) == "{}") mergeData(DataObject.Player[player.name], playerDataInit());
 });
 
+ServerSystem.beforeEvents.shutdown.subscribe(() => {
+    saveData();
+});
+
 function WorldLoad() {
     mergeData(DataObject.World, readDataOnDynamicProperty(ServerWorld));
     if (JSON.stringify(DataObject.World) == "{}") mergeData(DataObject.World, worldDataInit());
@@ -112,14 +116,6 @@ try {
     ServerWorld.afterEvents.worldInitialize.subscribe(WorldLoad); // remove at @minecraft/server 2.0.0
 } catch {
     ServerWorld.afterEvents.worldLoad.subscribe(WorldLoad);
-}
-
-function pretreatmentWorldData() {
-    for (const i of world_data_preprocessor) mergeData(DataObject.World, i(DataObject.World));
-}
-
-function pretreatmentPlayerData(name) {
-    for (const i of player_data_preprocessor) mergeData(DataObject.Player[name], DataObject.Player[name]);
 }
 
 export {
