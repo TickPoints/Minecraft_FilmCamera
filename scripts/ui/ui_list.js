@@ -146,7 +146,11 @@ export const ui_list = {
     "editor_working_frame": function(player, data) {
         const root = new ui.ActionUI();
         root.title = "$filmcamera.scripts.ui.new.editor_working_frame.title";
-        root.message = "$filmcamera.scripts.ui.new.editor_working_frame.message";
+        const frame = data.frames[data.frameIndex];
+        root.message = translate("filmcamera.scripts.ui.new.editor_working_frame.message",
+            frame.operator ? frame.operator : "None",
+            frame.args ? frame.args.toString() : "None"
+        );
         root.list = [
             "$filmcamera.scripts.ui.new.editor_working_frame.button1",
             "$filmcamera.scripts.ui.new.editor_working_frame.button2"
@@ -161,11 +165,11 @@ export const ui_list = {
                 });
             },
             function(player) {
-                ui_list.editor_working_choose_operator(player, data.frames[data.frameIndex], data);
+                ui_list.editor_working_choose_operator(player, frame, data);
             }
         ];
         root.UserClosedProcessor = function(player) {
-            ui_list.editor_working_scene(player);
+            ui_list.editor_working_scene(player, data.scenes, data.sceneIndex);
         };
         root.build();
         root.show(player);
@@ -173,12 +177,14 @@ export const ui_list = {
     "editor_working_choose_operator": function(player, frame, _data) {
         const root = new ui.ActionUI;
         root.title = "$filmcamera.scripts.ui.new.editor_working_choose_operator.title";
-        root.message = translate("filmcamera.scripts.ui.new.editor_working_choose_operator.message", frame.operator ? frame.operator : "None", frame.args ? frame.args.toString() : "None");
-        root.list = dockingTool.OptionalOperator.translate;
-        for (const i of dockingTool.OptionalOperator.root) {
+        root.message = "$filmcamera.scripts.ui.new.editor_working_choose_operator.message";
+        const keysList = Object.keys(dockingTool.OptionalOperator);
+        for (const i of keysList)
+            root.list.push(`filmcamera.scripts.editor.operator_meta_map.translate.${i}`);
+        for (const i of keysList) {
             root.func.push(function(player) {
-                frame.operator = i.id;
-                ui_list.editor_working_edit_args(player, i.ui);
+                frame.operator = i;
+                ui_list.editor_working_edit_args(player, dockingTool.OptionalOperator[i], _data);
             });
         }
         root.UserClosedProcessor = function(player) {
@@ -187,8 +193,18 @@ export const ui_list = {
         root.build();
         root.show(player);
     },
-    "editor_working_edit_args": function(player) {
-        //
+    "editor_working_edit_args": function(player, meta, _data) {
+        const root = new ui.ModalUI();
+        root.title = "$filmcamera.scripts.ui.new.editor_working_edit_args.title";
+        root.message = "$filmcamera.scripts.ui.new.editor_working_edit_args.message";
+        root.list = meta.ui;
+        root.func = function(player, values) {
+            meta.func(player, values);
+            ui_list.editor_working_frame(player, _data);
+        }
+        root.preventCanceled();
+        root.build();
+        root.show(player);
     },
     "editor_menu": function(player) {
         if (dockingTool.isProjectEditing(player)) {
