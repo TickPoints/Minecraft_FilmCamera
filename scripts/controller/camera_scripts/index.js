@@ -1,3 +1,3 @@
 export const scripts_list = {
-    "example": "example.js"
-}
+  example: "example.js",
+};
