@@ -15,6 +15,16 @@ filmcamera.scripts.editor.project.init.success=§bProject inited successfully!
 filmcamera.scripts.editor.project.cannot_open.project_already_opend=§cThe %1 project is currently still edited. So the %2 project cannot be opened.
 filmcamera.scripts.editor.project.cannot_open.no_optional_projects=§cThere are no projects to open.
 filmcamera.scripts.editor.project.cannot_open.not_exist=§cThe current project was not found.
+#### Frame Operator
+filmcamera.scripts.editor.operator_meta_map.translate.camera-clear=Clear Camera Effect
+filmcamera.scripts.editor.operator_meta_map.translate.camera-fade=Add Camera Fade
+filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-movement=Set Move Permission
+filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-carmera=Set Camera Permission
+filmcamera.scripts.editor.operator_meta_map.translate.player-runMinecraftCommand=Run Minecraft Command
+filmcamera.scripts.editor.operator_meta_map.translate.time-waitTicks=Wait Ticks
+#### Events
+filmcamera.scripts.editor.events.selected_location1=Location1 [ %1, %2, %3 ] was selected
+filmcamera.scripts.editor.events.selected_location2=Location2 [ %1, %2, %3 ] was selected
 ### Command System
 #### Metadata
 ##### Source ID
@@ -35,8 +45,8 @@ filmcamera.scripts.command_system.help.commands.playCameraScript=For playing the
 filmcamera.scripts.command_system.help.commands.runMinecraftCommand=For executing MinecraftCommand
 filmcamera.scripts.command_system.help.commands.menu=For showing MENU UI
 filmcamera.scripts.command_system.help.commands.saveData=For saving data of FilmCamera
-filmcamera.scripts.command_system.help.commands.edit=用于快速打开仓库编辑器
-filmcamera.scripts.command_system.help.commands.openProject=用于打开仓库以编辑
+filmcamera.scripts.command_system.help.commands.edit=For opening Project Editor quickly
+filmcamera.scripts.command_system.help.commands.openProject=For opening project to current project
 ### UI
 filmcamera.scripts.ui.MultiPageUI.last_page=Last Page
 filmcamera.scripts.ui.MultiPageUI.next_page=Next Page
@@ -74,6 +84,23 @@ filmcamera.scripts.ui.new.editor_working_scene.title=§bScene Editor
 filmcamera.scripts.ui.new.editor_working_scene.message=Control selected scene
 filmcamera.scripts.ui.new.editor_working_scene.button1=§cRemove this scene
 filmcamera.scripts.ui.new.editor_working_scene.button2=New a frame
+filmcamera.scripts.ui.new.editor_working_scene.tip=§cAre you sure to delete the current scene?\nOnce deleted, it cannot be restored!
+filmcamera.scripts.ui.new.editor_working_frame.title=§bEdit Frame
+filmcamera.scripts.ui.new.editor_working_frame.message=Edit the frame.
+filmcamera.scripts.ui.new.editor_working_frame.button1=§cRemove
+filmcamera.scripts.ui.new.editor_working_frame.button2=§eSet
+filmcamera.scripts.ui.new.editor_working_frame.tip=§cAre you sure to delete the current frame?\nOnce deleted, it cannot be restored!
+filmcamera.scripts.ui.new.editor_working_choose_operator.title=§eSet Frame
+filmcamera.scripts.ui.new.editor_working_choose_operator.message=Sets the control operator and args for the current frame.\nOperator: §e%1§r\nArgs: §e%2§r
+filmcamera.scripts.ui.new.editor_working_frame.title=§bEdit Frame
+filmcamera.scripts.ui.new.editor_working_frame.message=Edit the frame.\nOperator: §e%1§r\nArgs: §e%2§r
+filmcamera.scripts.ui.new.editor_working_frame.button1=§cRemove
+filmcamera.scripts.ui.new.editor_working_frame.button2=§eSet
+filmcamera.scripts.ui.new.editor_working_frame.tip=§cAre you sure to delete the current frame?\nOnce deleted, it cannot be restored!
+filmcamera.scripts.ui.new.editor_working_choose_operator.title=§eSet Frame Operator
+filmcamera.scripts.ui.new.editor_working_choose_operator.message=Choose current frame's operator.
+filmcamera.scripts.ui.new.editor_working_edit_args.title=§eSet Frame Args
+filmcamera.scripts.ui.new.editor_working_edit_args.message=Edit Frame's Args
 ## Items
 itemGroup.name.filmcamera=§eFILMCAMERA Items
 item.filmcamera:selection_bar1.name=selection bar1

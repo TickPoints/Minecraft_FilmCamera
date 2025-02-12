@@ -15,6 +15,16 @@ filmcamera.scripts.editor.project.init.success=§b项目构建成功。
 filmcamera.scripts.editor.project.cannot_open.project_already_opend=§c当前仍在编辑 %1 项目，不可以打开 %2 项目。
 filmcamera.scripts.editor.project.cannot_open.no_optional_projects=§c没有可打开的项目。
 filmcamera.scripts.editor.project.cannot_open.not_exist=§c当前项目未找到。
+#### 帧操作符
+filmcamera.scripts.editor.operator_meta_map.translate.camera-clear=清除相机效果
+filmcamera.scripts.editor.operator_meta_map.translate.camera-fade=添加相机过渡
+filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-movement=控制移动权限
+filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-carmera=控制相机权限
+filmcamera.scripts.editor.operator_meta_map.translate.player-runMinecraftCommand=执行Minecraft命令
+filmcamera.scripts.editor.operator_meta_map.translate.time-waitTicks=等待Ticks
+#### 事件
+filmcamera.scripts.editor.events.selected_location1=§b位置1 [ %1, %2, %3 ] 已被选定
+filmcamera.scripts.editor.events.selected_location2=§b位置2 [ %1, %2, %3 ] 已被选定
 ### 命令系统
 #### 元数据
 ##### 来源ID
@@ -35,8 +45,8 @@ filmcamera.scripts.command_system.help.commands.playCameraScript=用于播放相
 filmcamera.scripts.command_system.help.commands.runMinecraftCommand=用于执行我的世界命令
 filmcamera.scripts.command_system.help.commands.menu=用于显示菜单UI
 filmcamera.scripts.command_system.help.commands.saveData=用于保存 FilmCamera 数据
-filmcamera.scripts.command_system.help.commands.edit=用于快速打开仓库编辑器
-filmcamera.scripts.command_system.help.commands.openProject=用于打开仓库以编辑
+filmcamera.scripts.command_system.help.commands.edit=用于快速打开项目编辑器
+filmcamera.scripts.command_system.help.commands.openProject=用于打开项目以编辑
 ### UI
 filmcamera.scripts.ui.MultiPageUI.last_page=上一页
 filmcamera.scripts.ui.MultiPageUI.next_page=下一页
@@ -74,6 +84,16 @@ filmcamera.scripts.ui.new.editor_working_scene.title=§b场景编辑
 filmcamera.scripts.ui.new.editor_working_scene.message=控制选择的场景
 filmcamera.scripts.ui.new.editor_working_scene.button1=§c删除当前场景
 filmcamera.scripts.ui.new.editor_working_scene.button2=新建一个帧
+filmcamera.scripts.ui.new.editor_working_scene.tip=§c确定删除当前场景吗?\n一旦删除，将无法还原！
+filmcamera.scripts.ui.new.editor_working_frame.title=§b编辑帧
+filmcamera.scripts.ui.new.editor_working_frame.message=对帧进行编辑\nOperator: §e%1§r\nArgs: §e%2§r
+filmcamera.scripts.ui.new.editor_working_frame.button1=§c删除
+filmcamera.scripts.ui.new.editor_working_frame.button2=§e设定
+filmcamera.scripts.ui.new.editor_working_frame.tip=§c确定删除当前帧吗?\n一旦删除，将无法还原！
+filmcamera.scripts.ui.new.editor_working_choose_operator.title=§e设定帧Operator
+filmcamera.scripts.ui.new.editor_working_choose_operator.message=选择当前帧的Operator
+filmcamera.scripts.ui.new.editor_working_edit_args.title=§e设定帧Args
+filmcamera.scripts.ui.new.editor_working_edit_args.message=编辑帧Args
 ## 物品
 itemGroup.name.filmcamera=§eFILMCAMERA物品
 item.filmcamera:selection_bar1.name=选择棒1
