@@ -1,40 +1,40 @@
 export const entry = {
-  scenes: [
-    {
-      frames: [
+    scenes: [
         {
-          operator: "camera-clear",
-          args: [],
+            frames: [
+                {
+                    operator: "camera-clear",
+                    args: [],
+                },
+                {
+                    operator: "player-runMinecraftCommand",
+                    args: ["say Hello"],
+                },
+                {
+                    operator: "time-waitTicks",
+                    args: [20],
+                },
+                {
+                    operator: "player-runMinecraftCommand",
+                    args: ["say FilmCamera"],
+                },
+            ],
         },
         {
-          operator: "player-runMinecraftCommand",
-          args: ["say Hello"],
+            frames: [
+                {
+                    operator: "player-runMinecraftCommand",
+                    args: ["say Test Complete!"],
+                },
+            ],
+        },
+    ],
+    scenes_composer: [
+        {
+            order: "top",
         },
         {
-          operator: "time-waitTicks",
-          args: [20],
+            order: "follow",
         },
-        {
-          operator: "player-runMinecraftCommand",
-          args: ["say FilmCamera"],
-        },
-      ],
-    },
-    {
-      frames: [
-        {
-          operator: "player-runMinecraftCommand",
-          args: ["say Test Complete!"],
-        },
-      ],
-    },
-  ],
-  scenes_composer: [
-    {
-      order: "top",
-    },
-    {
-      order: "follow",
-    },
-  ],
+    ],
 };

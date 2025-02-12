@@ -1,32 +1,32 @@
 function translate(text, ...withData) {
-  if (withData) {
-    for (var i = 0; i < withData.length; i++) {
-      if (typeof withData[i] === "string") continue;
-      if (withData[i] == undefined) {
-        withData[i] = "";
-        continue;
-      }
-      withData[i] = withData[i].valueOf
-        ? withData[i].valueOf()
-        : withData.toString();
+    if (withData) {
+        for (var i = 0; i < withData.length; i++) {
+            if (typeof withData[i] === "string") continue;
+            if (withData[i] == undefined) {
+                withData[i] = "";
+                continue;
+            }
+            withData[i] = withData[i].valueOf
+                ? withData[i].valueOf()
+                : withData.toString();
+        }
     }
-  }
-  return {
-    translate: text,
-    with: withData,
-  };
+    return {
+        translate: text,
+        with: withData,
+    };
 }
 
 function raw(text) {
-  if (typeof text !== "string") return text;
-  if (text[0] === "$") return translate(text.substring(1));
-  else if (text[0] === "#") {
-    return text.substring(1);
-  } else {
-    return {
-      text: text,
-    };
-  }
+    if (typeof text !== "string") return text;
+    if (text[0] === "$") return translate(text.substring(1));
+    else if (text[0] === "#") {
+        return text.substring(1);
+    } else {
+        return {
+            text: text,
+        };
+    }
 }
 
 export { translate, raw };
