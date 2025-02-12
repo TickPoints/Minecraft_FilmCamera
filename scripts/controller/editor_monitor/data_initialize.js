@@ -14,6 +14,10 @@ const InitMap = {
     Player: {
         projects: {},
         current_project: null,
+        selection: [
+            {},
+            {}
+        ],
     },
 };
 
