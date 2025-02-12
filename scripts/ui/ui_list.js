@@ -216,6 +216,7 @@ export const ui_list = {
                 ui_list.editor_working_edit_args(
                     player,
                     dockingTool.OptionalOperator[i],
+                    frame,
                     _data
                 );
             });
@@ -226,7 +227,7 @@ export const ui_list = {
         root.build();
         root.show(player);
     },
-    editor_working_edit_args: function (player, meta, _data) {
+    editor_working_edit_args: function (player, meta, frame, _data) {
         const root = new ui.ModalUI();
         root.title =
             "$filmcamera.scripts.ui.new.editor_working_edit_args.title";
@@ -234,7 +235,7 @@ export const ui_list = {
             "$filmcamera.scripts.ui.new.editor_working_edit_args.message";
         root.list = meta.ui;
         root.func = function (player, values) {
-            meta.func(player, values);
+            meta.func(player, values, frame);
             ui_list.editor_working_frame(player, _data);
         };
         root.preventCanceled();
