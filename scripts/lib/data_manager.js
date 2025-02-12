@@ -1,6 +1,6 @@
 import {
     world as ServerWorld,
-    system as ServerSystem,
+    system as ServerSystem
 } from "@minecraft/server";
 import { LZString } from "./lz-string.js";
 
@@ -15,14 +15,14 @@ function mergeData(oldObj, newObj) {
             value: newObj[i],
             writable: true,
             enumerable: true,
-            configurable: true,
+            configurable: true
         });
     }
 }
 
 const DataObject = {
     World: {},
-    Player: {},
+    Player: {}
 };
 
 function getDataManager(target = ServerWorld) {
@@ -80,7 +80,7 @@ function writePlayerDataInit(func) {
 }
 
 // Monitor
-ServerWorld.afterEvents.playerSpawn.subscribe((eventData) => {
+ServerWorld.afterEvents.playerSpawn.subscribe(eventData => {
     if (!eventData.initialSpawn) return;
     const player = eventData.player;
     DataObject.Player[player.name] = readDataOnDynamicProperty(player);

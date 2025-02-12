@@ -4,37 +4,37 @@ export const entry = {
             frames: [
                 {
                     operator: "camera-clear",
-                    args: [],
+                    args: []
                 },
                 {
                     operator: "player-runMinecraftCommand",
-                    args: ["say Hello"],
+                    args: ["say Hello"]
                 },
                 {
                     operator: "time-waitTicks",
-                    args: [20],
+                    args: [20]
                 },
                 {
                     operator: "player-runMinecraftCommand",
-                    args: ["say FilmCamera"],
-                },
-            ],
+                    args: ["say FilmCamera"]
+                }
+            ]
         },
         {
             frames: [
                 {
                     operator: "player-runMinecraftCommand",
-                    args: ["say Test Complete!"],
-                },
-            ],
-        },
+                    args: ["say Test Complete!"]
+                }
+            ]
+        }
     ],
     scenes_composer: [
         {
-            order: "top",
+            order: "top"
         },
         {
-            order: "follow",
-        },
-    ],
+            order: "follow"
+        }
+    ]
 };

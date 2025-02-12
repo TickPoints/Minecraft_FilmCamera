@@ -3,7 +3,7 @@
 import {
     ActionFormData,
     MessageFormData,
-    ModalFormData,
+    ModalFormData
 } from "@minecraft/server-ui";
 import { raw } from "../text/local.js";
 
@@ -58,7 +58,7 @@ class ActionUI {
         const rootUI = this._rootUI;
         return rootUI
             .show(player)
-            .then((response) => {
+            .then(response => {
                 if (!response.canceled) {
                     this.func[response.selection](player);
                 }
@@ -74,7 +74,7 @@ class ActionUI {
                 }
                 this.UserCanceledProcessor(player);
             })
-            .catch((e) => console.error("UI Error: ", e, e.stack));
+            .catch(e => console.error("UI Error: ", e, e.stack));
     }
 }
 
@@ -112,7 +112,7 @@ class MessageUI {
         const rootUI = this._rootUI;
         return rootUI
             .show(player)
-            .then((response) => {
+            .then(response => {
                 if (!response.canceled) {
                     this.func[response.selection](player);
                 }
@@ -128,7 +128,7 @@ class MessageUI {
                 }
                 this.UserCanceledProcessor(player);
             })
-            .catch((e) => console.error("UI Error: ", e, e.stack));
+            .catch(e => console.error("UI Error: ", e, e.stack));
     }
 }
 
@@ -175,7 +175,7 @@ class ModalUI {
         const rootUI = this._rootUI;
         return rootUI
             .show(player)
-            .then((response) => {
+            .then(response => {
                 if (!response.canceled) {
                     this.func(player, response.formValues);
                 }
@@ -191,7 +191,7 @@ class ModalUI {
                 }
                 this.UserCanceledProcessor(player);
             })
-            .catch((e) => console.error("UI Error: ", e, e.stack));
+            .catch(e => console.error("UI Error: ", e, e.stack));
     }
 }
 
@@ -229,9 +229,9 @@ class MultiPageUI {
                 rawtext: [
                     raw(title),
                     {
-                        text: ` [${i + 1}/${lists.length}]`,
-                    },
-                ],
+                        text: ` [${i + 1}/${lists.length}]`
+                    }
+                ]
             });
             rootUI.body(raw(this.message));
             rootUI.button(raw("$filmcamera.scripts.ui.MultiPageUI.last_page"));
@@ -250,7 +250,7 @@ class MultiPageUI {
         const rootUIs = this._rootUIs;
         return rootUIs[pageIndex]
             .show(player)
-            .then((response) => {
+            .then(response => {
                 if (!response.canceled) {
                     const func = splitArray(this.func, this.pageValue)[
                         pageIndex
@@ -282,7 +282,7 @@ class MultiPageUI {
                 }
                 this.UserCanceledProcessor(player, pageIndex);
             })
-            .catch((e) => console.error("UI Error: ", e, e.stack));
+            .catch(e => console.error("UI Error: ", e, e.stack));
     }
 }
 
@@ -292,7 +292,7 @@ function tip(player, message, next, back) {
     rootUI.message = message;
     rootUI.list = [
         "$filmcamera.scripts.ui.tip.next",
-        "$filmcamera.scripts.ui.tip.back",
+        "$filmcamera.scripts.ui.tip.back"
     ];
     rootUI.func = [next, back];
     rootUI.build();

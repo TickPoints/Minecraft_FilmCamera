@@ -1,6 +1,6 @@
 import {
     world as ServerWorld,
-    system as ServerSystem,
+    system as ServerSystem
 } from "@minecraft/server";
 import { sandbox } from "../lib/sandbox.js";
 import { parse_scene } from "./parser.js";
@@ -10,7 +10,7 @@ function run_in_sandbox(player, scene) {
         PlayerCamera: player.camera,
         Player: player,
         ServerWorld,
-        ServerSystem,
+        ServerSystem
     });
 }
 
@@ -22,7 +22,7 @@ function play_frames(frames, player) {
         console.error(
             "Some errors occurred during the execution of frames:",
             e,
-            e.stack,
+            e.stack
         );
         return null;
     }
@@ -30,7 +30,7 @@ function play_frames(frames, player) {
 
 function play_scene(scene, players) {
     const frames = parse_scene(scene);
-    const wait_frames = players.map((player) => play_frames(frames, player));
+    const wait_frames = players.map(player => play_frames(frames, player));
     if (wait_frames.length > 0) {
         return Promise.all(wait_frames);
     } else {
@@ -52,7 +52,7 @@ async function play_scenes(scenes, scenes_composer, players) {
                     await scenes_status[i - 1];
                 } else {
                     console.warn(
-                        "'follow' order not applicable for the first scene",
+                        "'follow' order not applicable for the first scene"
                     );
                 }
                 scenes_status[i] = play_scene(scene, players);

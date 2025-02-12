@@ -1,12 +1,12 @@
 import {
     world as ServerWorld,
-    system as ServerSystem,
+    system as ServerSystem
 } from "@minecraft/server";
 import { printToPlayer } from "../../text/print.js";
 import { translate } from "../../text/local.js";
 import { getDataManager } from "../../lib/data_manager.js";
 
-ServerWorld.beforeEvents.playerBreakBlock.subscribe((eventData) => {
+ServerWorld.beforeEvents.playerBreakBlock.subscribe(eventData => {
     if (typeof eventData.itemStack === "undefined") return;
     const itemType = eventData.itemStack.typeId;
     const player = eventData.player;
@@ -17,7 +17,7 @@ ServerWorld.beforeEvents.playerBreakBlock.subscribe((eventData) => {
             eventData.cancel = true;
             playerData.selection[0] = {
                 ...blockLocation,
-                dimension: eventData.dimension.id,
+                dimension: eventData.dimension.id
             };
             ServerSystem.run(() =>
                 printToPlayer(
@@ -26,9 +26,9 @@ ServerWorld.beforeEvents.playerBreakBlock.subscribe((eventData) => {
                         "filmcamera.scripts.editor.events.selected_location1",
                         blockLocation.x.toString(),
                         blockLocation.y.toString(),
-                        blockLocation.z.toString(),
-                    ),
-                ),
+                        blockLocation.z.toString()
+                    )
+                )
             );
             return;
         }
@@ -36,7 +36,7 @@ ServerWorld.beforeEvents.playerBreakBlock.subscribe((eventData) => {
             eventData.cancel = true;
             playerData.selection[1] = {
                 ...blockLocation,
-                dimension: eventData.dimension.id,
+                dimension: eventData.dimension.id
             };
             ServerSystem.run(() =>
                 printToPlayer(
@@ -45,9 +45,9 @@ ServerWorld.beforeEvents.playerBreakBlock.subscribe((eventData) => {
                         "filmcamera.scripts.editor.events.selected_location2",
                         blockLocation.x.toString(),
                         blockLocation.y.toString(),
-                        blockLocation.z.toString(),
-                    ),
-                ),
+                        blockLocation.z.toString()
+                    )
+                )
             );
             return;
         }
@@ -82,9 +82,9 @@ const RealTimeLoader = {
                 {
                     x: block.x,
                     y: block.y,
-                    z: block.z,
-                },
+                    z: block.z
+                }
             );
         }
-    },
+    }
 };

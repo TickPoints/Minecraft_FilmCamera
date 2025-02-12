@@ -1,7 +1,7 @@
 import { parseCommand } from "./system.js";
 import { world as ServerWorld } from "@minecraft/server";
 
-ServerWorld.beforeEvents.chatSend.subscribe((event) => {
+ServerWorld.beforeEvents.chatSend.subscribe(event => {
     if (event.targets) return;
     if (event.message[0] !== "!") return;
     event.cancel = true;

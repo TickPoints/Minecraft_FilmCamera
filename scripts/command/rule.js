@@ -12,16 +12,16 @@ export const rule = {
             parameters: [
                 {
                     type: "enumeration",
-                    enumeration: ["info", "warn", "error"],
+                    enumeration: ["info", "warn", "error"]
                 },
                 {
-                    type: "string",
-                },
+                    type: "string"
+                }
             ],
             needPermission: true,
             description:
-                "$filmcamera.scripts.command_system.help.commands.console",
-        },
+                "$filmcamera.scripts.command_system.help.commands.console"
+        }
     },
     getEntity: {
         type: "function",
@@ -36,17 +36,17 @@ export const rule = {
                 case "target": {
                     returnValue =
                         ServerWorld.getDimension(dimension).getEntities(
-                            options,
+                            options
                         )[0];
                     break;
                 }
                 case "player": {
                     options = {
-                        type: "minecraft:player",
+                        type: "minecraft:player"
                     };
                     returnValue =
                         ServerWorld.getDimension(dimension).getEntities(
-                            options,
+                            options
                         );
                     let location = performer.location;
                     let players = [];
@@ -71,35 +71,35 @@ export const rule = {
             parameters: [
                 {
                     type: "enumeration",
-                    enumeration: ["self", "target", "player"],
+                    enumeration: ["self", "target", "player"]
                 },
                 {
                     type: "enumeration",
                     enumeration: ["overworld", "nether", "the_end"],
-                    requirement: "select",
+                    requirement: "select"
                 },
                 {
                     type: "json",
                     conversion: true,
-                    requirement: "select",
-                },
+                    requirement: "select"
+                }
             ],
             description:
-                "$filmcamera.scripts.command_system.help.commands.getEntity",
-        },
+                "$filmcamera.scripts.command_system.help.commands.getEntity"
+        }
     },
     help: {
         type: "function",
         run: function (performer) {
             let message = {
-                rawtext: [],
+                rawtext: []
             };
 
             function rankJSON(jsonObj) {
                 const sortedMap = new Map(
                     Object.entries(jsonObj).sort(([key1], [key2]) =>
-                        key1.localeCompare(key2),
-                    ),
+                        key1.localeCompare(key2)
+                    )
                 );
                 return Object.fromEntries(sortedMap);
             }
@@ -108,24 +108,23 @@ export const rule = {
                 let config = rule[i].config;
                 if (config === undefined) {
                     message.rawtext.push({
-                        text: `${i} - [0]\n`,
+                        text: `${i} - [0]\n`
                     });
                 } else {
                     message.rawtext.push({
-                        text: `${i} - [${config.needPermission ? "editor" : "common"}]`,
+                        text: `${i} - [${config.needPermission ? "editor" : "common"}]`
                     });
                     message.rawtext.push(raw(config.description));
                     message.rawtext.push({
-                        text: "\n",
+                        text: "\n"
                     });
                 }
             }
             performer.sendMessage(message);
         },
         config: {
-            description:
-                "$filmcamera.scripts.command_system.help.commands.help",
-        },
+            description: "$filmcamera.scripts.command_system.help.commands.help"
+        }
     },
     getEntities: {
         type: "function",
@@ -133,7 +132,7 @@ export const rule = {
             if (dimension === null) dimension = performer.dimension.id;
             var entities = [];
             for (const i of ServerWorld.getDimension(dimension).getEntities(
-                options,
+                options
             ))
                 entities.push(i.id);
             return JSON.stringify(entities);
@@ -142,17 +141,17 @@ export const rule = {
             parameters: [
                 {
                     type: "json",
-                    conversion: true,
+                    conversion: true
                 },
                 {
                     type: "enumeration",
                     enumeration: ["overworld", "nether", "the_end"],
-                    requirement: "select",
-                },
+                    requirement: "select"
+                }
             ],
             description:
-                "$filmcamera.scripts.command_system.help.commands.getEntities",
-        },
+                "$filmcamera.scripts.command_system.help.commands.getEntities"
+        }
     },
     runMinecraftCommand: {
         type: "function",
@@ -162,46 +161,46 @@ export const rule = {
         config: {
             parameters: [
                 {
-                    type: "string",
-                },
+                    type: "string"
+                }
             ],
             needPermission: true,
             description:
-                "$filmcamera.scripts.command_system.help.commands.runMinecraftCommand",
-        },
+                "$filmcamera.scripts.command_system.help.commands.runMinecraftCommand"
+        }
     },
     playCameraScript: {
         type: "function",
         run: function (
             _performer,
             script_name,
-            players = ServerWorld.getAllPlayers(),
+            players = ServerWorld.getAllPlayers()
         ) {
             import("../controller/script_player.js")
                 .then(({ play_script }) => {
                     play_script(script_name, players);
                 })
-                .catch((e) => {
+                .catch(e => {
                     console.error(
-                        `The playCamera Script command encountered some errors during execution: \n${e}`,
+                        `The playCamera Script command encountered some errors during execution: \n${e}`
                     );
                 });
         },
         config: {
             parameters: [
                 {
-                    type: "string",
+                    type: "string"
                 },
                 {
                     type: "players",
                     conversion: true,
-                    requirement: "select",
-                },
+                    requirement: "select"
+                }
             ],
             needPermission: true,
             description:
-                "$filmcamera.scripts.command_system.help.commands.playCameraScript",
-        },
+                "$filmcamera.scripts.command_system.help.commands.playCameraScript"
+        }
     },
     menu: {
         type: "function",
@@ -211,9 +210,8 @@ export const rule = {
             });
         },
         config: {
-            description:
-                "$filmcamera.scripts.command_system.help.commands.menu",
-        },
+            description: "$filmcamera.scripts.command_system.help.commands.menu"
+        }
     },
     saveData: {
         type: "function",
@@ -225,8 +223,8 @@ export const rule = {
         config: {
             needPermission: true,
             description:
-                "$filmcamera.scripts.command_system.help.commands.saveData",
-        },
+                "$filmcamera.scripts.command_system.help.commands.saveData"
+        }
     },
     edit: {
         type: "function",
@@ -237,9 +235,8 @@ export const rule = {
         },
         config: {
             needPermission: true,
-            description:
-                "$filmcamera.scripts.command_system.help.commands.edit",
-        },
+            description: "$filmcamera.scripts.command_system.help.commands.edit"
+        }
     },
     openProject: {
         type: "function",
@@ -248,25 +245,25 @@ export const rule = {
                 ({ openProject }) => {
                     openProject(performer, {
                         name: ProjectName,
-                        type: ProjectType,
+                        type: ProjectType
                     });
-                },
+                }
             );
         },
         config: {
             parameters: [
                 {
-                    type: "string",
+                    type: "string"
                 },
                 {
                     type: "enumeration",
                     enumeration: ["public", "private"],
-                    requirement: "select",
-                },
+                    requirement: "select"
+                }
             ],
             needPermission: true,
             description:
-                "$filmcamera.scripts.command_system.help.commands.openProject",
-        },
-    },
+                "$filmcamera.scripts.command_system.help.commands.openProject"
+        }
+    }
 };

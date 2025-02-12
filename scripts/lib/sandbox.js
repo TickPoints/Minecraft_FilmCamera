@@ -4,7 +4,7 @@ function sandbox(code, localScope) {
     localScope.sandboxResult = null;
     try {
         const func = new AsyncFunction(
-            "with(this) {" + code + "\nreturn sandboxResult; }",
+            "with(this) {" + code + "\nreturn sandboxResult; }"
         );
         const result = func.call(localScope);
         return result;
@@ -12,7 +12,7 @@ function sandbox(code, localScope) {
         console.error(
             "An error occurred during sandbox execution:",
             e,
-            e.stack,
+            e.stack
         );
         return e;
     }

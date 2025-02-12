@@ -31,10 +31,10 @@ function openProject(player, project) {
             translate(
                 "filmcamera.scripts.editor.project.cannot_open.project_already_opend",
                 playerData.current_project.name,
-                project.name,
+                project.name
             ),
             "$filmcamera.scripts.editor.meta.source_id",
-            "ERROR",
+            "ERROR"
         );
         return;
     }
@@ -46,10 +46,10 @@ function openProject(player, project) {
                     translate(
                         "filmcamera.scripts.editor.project.cannot_open.not_exist",
                         player.name,
-                        playerData.current_project,
+                        playerData.current_project
                     ),
                     "$filmcamera.scripts.editor.meta.source_id",
-                    "ERROR",
+                    "ERROR"
                 );
                 return;
             }
@@ -61,10 +61,10 @@ function openProject(player, project) {
                     translate(
                         "filmcamera.scripts.editor.project.cannot_open.not_exist",
                         player.name,
-                        playerData.current_project,
+                        playerData.current_project
                     ),
                     "$filmcamera.scripts.editor.meta.source_id",
-                    "ERROR",
+                    "ERROR"
                 );
                 return;
             }
@@ -76,15 +76,15 @@ function openProject(player, project) {
     playerData.current_project = {
         type: project.type,
         source: project.type === "private" ? player.name : undefined,
-        name: project.name,
+        name: project.name
     };
     printToPlayer(
         player,
         translate(
             "filmcamera.scripts.editor.project.opendMessage",
-            project.name,
+            project.name
         ),
-        "$filmcamera.scripts.editor.meta.source_id",
+        "$filmcamera.scripts.editor.meta.source_id"
     );
 }
 
@@ -92,29 +92,29 @@ function getOptionalProjectsList(player) {
     const playerData = getDataManager(player);
     let list = {
         raw: [],
-        name: [],
+        name: []
     };
     for (const i of Object.keys(playerData.projects)) {
         list.raw.push({
             type: "private",
             name: i,
-            source: player.name,
+            source: player.name
         });
     }
     for (const i of Object.keys(worldData.projects)) {
         list.raw.push({
             type: "public",
-            name: i,
+            name: i
         });
     }
     if (JSON.stringify(list.raw) === "[]") {
         printToPlayer(
             player,
             translate(
-                "filmcamera.scripts.editor.project.cannot_open.no_optional_projects",
+                "filmcamera.scripts.editor.project.cannot_open.no_optional_projects"
             ),
             "$filmcamera.scripts.editor.meta.source_id",
-            "ERROR",
+            "ERROR"
         );
         return null;
     }
@@ -130,21 +130,21 @@ function initProject(player, projectConfig) {
             player,
             translate("filmcamera.scripts.no_permission"),
             "$filmcamera.scripts.editor.meta.source_id",
-            "ERROR",
+            "ERROR"
         );
         return;
     }
     var projectData = {
         scenes: [],
         scenes_composer: [],
-        config: {},
+        config: {}
     };
     const playerData = getDataManager(player);
     openProject(player, projectConfig);
     printToPlayer(
         player,
         translate("filmcamera.scripts.editor.project.init.success"),
-        "$filmcamera.scripts.editor.meta.source_id",
+        "$filmcamera.scripts.editor.meta.source_id"
     );
 }
 
@@ -154,7 +154,7 @@ function getCurrentProjectData(player) {
             player,
             translate("filmcamera.scripts.editor.project.not_opend"),
             "$filmcamera.scripts.editor.meta.source_id",
-            "ERROR",
+            "ERROR"
         );
         return null;
     }
@@ -173,7 +173,7 @@ function getCurrentProjectMeta(player) {
 function getCurrentWorldData(player) {
     if (!hasPermission(player)) {
         console.error(
-            "You cannot access the current world data without permission!",
+            "You cannot access the current world data without permission!"
         );
         return;
     }
@@ -183,7 +183,7 @@ function getCurrentWorldData(player) {
 function getCurrentPlayerData(player) {
     if (!hasPermission(player)) {
         console.error(
-            "You cannot access the current world data without permission!",
+            "You cannot access the current world data without permission!"
         );
         return;
     }
@@ -193,7 +193,7 @@ function getCurrentPlayerData(player) {
 function addScene(player) {
     const projectData = getCurrentProjectData(player);
     projectData.scenes.push({
-        frames: [],
+        frames: []
     });
 }
 
@@ -215,5 +215,5 @@ export {
     getCurrentPlayerData,
     addScene,
     removeScene,
-    operator_meta_map as OptionalOperator,
+    operator_meta_map as OptionalOperator
 };

@@ -4,11 +4,11 @@ export const operator_meta_map = {
             [
                 "textField",
                 "This is an operator with no parameters and no content.",
-                "Null",
-            ],
+                "Null"
+            ]
         ],
         func: function (player, result) {},
-        checker: [],
+        checker: []
     },
-    "camera-fade": {},
+    "camera-fade": {}
 };

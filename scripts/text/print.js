@@ -5,21 +5,21 @@ function print(text, source = "FilmCamera", type = "INFO") {
     ServerWorld.sendMessage({
         rawtext: [
             {
-                text: "[",
+                text: "["
             },
             raw(source),
             {
-                text: "]",
+                text: "]"
             },
             {
-                text: "[",
+                text: "["
             },
             raw(type),
             {
-                text: "] ",
+                text: "] "
             },
-            text,
-        ],
+            text
+        ]
     });
 }
 
@@ -27,21 +27,21 @@ function printToPlayer(player, text, source = "FilmCamera", type = "INFO") {
     player.sendMessage({
         rawtext: [
             {
-                text: "[",
+                text: "["
             },
             raw(source),
             {
-                text: "]",
+                text: "]"
             },
             {
-                text: "[",
+                text: "["
             },
             raw(type),
             {
-                text: "] ",
+                text: "] "
             },
-            text,
-        ],
+            text
+        ]
     });
 }
 

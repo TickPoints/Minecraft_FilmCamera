@@ -1,7 +1,7 @@
 import {
     writeWorldDataInit,
     writePlayerDataInit,
-    getDataManager,
+    getDataManager
 } from "../../lib/data_manager.js";
 
 const SYSTEM_VERSION = [1, 0, 0];
@@ -9,16 +9,13 @@ const SYSTEM_VERSION = [1, 0, 0];
 const InitMap = {
     World: {
         last_version: SYSTEM_VERSION,
-        projects: {},
+        projects: {}
     },
     Player: {
         projects: {},
         current_project: null,
-        selection: [
-            {},
-            {}
-        ],
-    },
+        selection: [{}, {}]
+    }
 };
 
 writeWorldDataInit(() => {

@@ -8,7 +8,7 @@ function printError(target, text, ...withData) {
         target,
         translate(text, ...withData),
         "$filmcamera.scripts.command_system.meta.source_id.configureParser",
-        "ERROR",
+        "ERROR"
     );
     return null;
 }
@@ -26,7 +26,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Number",
+                "Number"
             );
         }
         return num;
@@ -40,7 +40,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Int",
+                "Int"
             );
         }
         return Number(parameters[i]);
@@ -54,7 +54,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                enumeration.toString(),
+                enumeration.toString()
             );
         }
     },
@@ -68,7 +68,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Entity",
+                "Entity"
             );
         }
     },
@@ -86,7 +86,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Entities",
+                "Entities"
             );
         }
     },
@@ -100,7 +100,7 @@ export const type_map = {
                     parameters[i],
                     parameters[i - 1],
                     parameters[i + 1],
-                    "Player",
+                    "Player"
                 );
             }
             return entity;
@@ -111,7 +111,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Player",
+                "Player"
             );
         }
     },
@@ -130,7 +130,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Players",
+                "Players"
             );
         }
     },
@@ -143,7 +143,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Json",
+                "Json"
             );
         }
         try {
@@ -156,7 +156,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Json",
+                "Json"
             );
         }
     },
@@ -169,7 +169,7 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "Bool",
+                "Bool"
             );
         }
         return value === "true";
@@ -203,8 +203,8 @@ export const type_map = {
                 parameters[i],
                 parameters[i - 1],
                 parameters[i + 1],
-                "CommandName",
+                "CommandName"
             );
         }
-    },
+    }
 };

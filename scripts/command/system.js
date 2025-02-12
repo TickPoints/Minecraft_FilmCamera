@@ -8,7 +8,7 @@ function printError(target, text, ...withData) {
         target,
         translate(text, ...withData),
         "$filmcamera.scripts.command_system.meta.source_id.main",
-        "ERROR",
+        "ERROR"
     );
 }
 
@@ -35,7 +35,7 @@ function configureParser(config, parameters, performer) {
                 printError(
                     performer,
                     "filmcamera.scripts.command_system.error.parameter_missing",
-                    param_index + 1,
+                    param_index + 1
                 );
                 return -1;
             }
@@ -50,8 +50,8 @@ function configureParser(config, parameters, performer) {
             param_index,
             {
                 rule,
-                config,
-            },
+                config
+            }
         );
         if (returnValue === null) return -1;
         if (param.conversion) parameters[param_index] = returnValue;
@@ -67,7 +67,7 @@ function run(command, performer = ServerWorld) {
             printError(
                 performer,
                 "filmcamera.scripts.command_system.error.command_does_not_exist",
-                command[i],
+                command[i]
             );
             return;
         }
@@ -87,7 +87,7 @@ function run(command, performer = ServerWorld) {
                     printError(
                         performer,
                         "filmcamera.scripts.command_system.error.command_work_error",
-                        `${e}${e.stack}`,
+                        `${e}${e.stack}`
                     );
                 }
                 break;
@@ -126,7 +126,7 @@ function parseCommand(performer, com, subcommand = []) {
         originalString,
         replacementString,
         startIndex,
-        endIndex,
+        endIndex
     ) {
         return `${originalString.substring(0, startIndex)}${replacementString}${originalString.substring(endIndex)}`;
     }
@@ -141,18 +141,18 @@ function parseCommand(performer, com, subcommand = []) {
                         key: charValue,
                         value: "&",
                         isOuter: stack.every(
-                            (item) => item.value !== "&" && !item.isOuter,
-                        ),
+                            item => item.value !== "&" && !item.isOuter
+                        )
                     });
                 } else {
                     stack.push({
                         key: charValue,
-                        value: "(",
+                        value: "("
                     });
                 }
             } else if (char === ")") {
                 const pop = stack.pop();
-                if (!stack.every((item) => item.value !== "&" && !item.isOuter))
+                if (!stack.every(item => item.value !== "&" && !item.isOuter))
                     continue;
                 let newCommand;
                 if (pop.value === "&") {
@@ -160,7 +160,7 @@ function parseCommand(performer, com, subcommand = []) {
                         com,
                         `command.${subcommand.length}`,
                         pop.key,
-                        charValue + 1,
+                        charValue + 1
                     );
                     subcommand.push(com.substring(pop.key + 2, charValue));
                     return parseCommand(performer, newCommand, subcommand);
@@ -170,10 +170,10 @@ function parseCommand(performer, com, subcommand = []) {
                         parseCommand(
                             performer,
                             com.substring(pop.key + 1, charValue),
-                            subcommand,
+                            subcommand
                         ),
                         pop.key,
-                        charValue + 1,
+                        charValue + 1
                     );
                     return parseCommand(performer, newCommand, subcommand);
                 }

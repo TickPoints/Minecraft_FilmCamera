@@ -13,7 +13,7 @@ function translate(text, ...withData) {
     }
     return {
         translate: text,
-        with: withData,
+        with: withData
     };
 }
 
@@ -24,7 +24,7 @@ function raw(text) {
         return text.substring(1);
     } else {
         return {
-            text: text,
+            text: text
         };
     }
 }

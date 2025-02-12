@@ -1,6 +1,6 @@
 import {
     world as ServerWorld,
-    system as ServerSystem,
+    system as ServerSystem
 } from "@minecraft/server";
 
 function getTimestamp() {
@@ -33,7 +33,7 @@ const timeTypeMap = {
                 cur_day,
                 cur_hours,
                 cur_minutes,
-                cur_seconds,
+                cur_seconds
             ).getTime();
         }
         return function (trigger) {
@@ -43,7 +43,7 @@ const timeTypeMap = {
                 day,
                 hours,
                 minutes,
-                seconds,
+                seconds
             ).getTime();
             if (!hasTriggered && getCurrentDateTime() <= target) {
                 trigger();
@@ -68,7 +68,7 @@ const timeTypeMap = {
                 hasTriggered = true;
             }
         };
-    },
+    }
 };
 
 function parseAbsoluteTime(time) {

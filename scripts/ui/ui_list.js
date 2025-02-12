@@ -9,7 +9,7 @@ export const ui_list = {
         root.message = "$filmcamera.scripts.ui.new.menu.message";
         root.list = [
             "$filmcamera.scripts.ui.new.menu.button1",
-            "$filmcamera.scripts.ui.new.menu.button2",
+            "$filmcamera.scripts.ui.new.menu.button2"
         ];
         root.func = [
             function (player) {
@@ -17,7 +17,7 @@ export const ui_list = {
             },
             function (player) {
                 ui_list.setting_menu(player);
-            },
+            }
         ];
         root.preventBusy();
         root.build();
@@ -31,7 +31,7 @@ export const ui_list = {
         root.func = [
             function (player) {
                 ui_list.debug_page(player);
-            },
+            }
         ];
         root.UserClosedProcessor = function (player) {
             ui_list.menu(player);
@@ -51,14 +51,14 @@ export const ui_list = {
                 "textField",
                 "WorldData",
                 "Current WorldData",
-                `#${JSON.stringify(CurrentWorldData)}`,
+                `#${JSON.stringify(CurrentWorldData)}`
             ],
             [
                 "textField",
                 "ThisPlayerData",
                 "Current PlayerData",
-                `#${JSON.stringify(PlayerWorldData)}`,
-            ],
+                `#${JSON.stringify(PlayerWorldData)}`
+            ]
         ];
         root.func = function (player, values) {
             // empty
@@ -80,11 +80,11 @@ export const ui_list = {
             "filmcamera.scripts.ui.new.editor_working.message",
             projectMeta.name,
             projectMeta.type,
-            projectMeta.source,
+            projectMeta.source
         );
         root.list = [
             "$filmcamera.scripts.ui.new.editor_working.button1",
-            "$filmcamera.scripts.ui.new.editor_working.button2",
+            "$filmcamera.scripts.ui.new.editor_working.button2"
         ];
         for (let i = 1; i <= projectData.scenes.length; i++) {
             root.list.push(`Scene [${i}]`);
@@ -96,7 +96,7 @@ export const ui_list = {
             function (player) {
                 dockingTool.addScene(player);
                 ui_list.editor_working(player);
-            },
+            }
         ];
         for (let i = 0; i < projectData.scenes.length; i++) {
             root.func.push(function (player) {
@@ -115,7 +115,7 @@ export const ui_list = {
             "$filmcamera.scripts.ui.new.editor_working_scene.message";
         root.list = [
             "$filmcamera.scripts.ui.new.editor_working_scene.button1",
-            "$filmcamera.scripts.ui.new.editor_working_scene.button2",
+            "$filmcamera.scripts.ui.new.editor_working_scene.button2"
         ];
         for (let i = 1; i <= frames.length; i++) {
             root.list.push(`Frame [${i}]`);
@@ -131,16 +131,16 @@ export const ui_list = {
                     },
                     function (player) {
                         ui_list.editor_working_scene(player);
-                    },
+                    }
                 );
             },
             function (player) {
                 frames.push({
                     operator: "",
-                    args: [],
+                    args: []
                 });
                 ui_list.editor_working_scene(player, scenes, index);
-            },
+            }
         ];
         for (let i = 0; i < frames.length; i++) {
             root.func.push(function (player) {
@@ -148,7 +148,7 @@ export const ui_list = {
                     frames,
                     frameIndex: i,
                     scenes,
-                    sceneIndex: index,
+                    sceneIndex: index
                 });
             });
         }
@@ -165,11 +165,11 @@ export const ui_list = {
         root.message = translate(
             "filmcamera.scripts.ui.new.editor_working_frame.message",
             frame.operator ? frame.operator : "None",
-            frame.args ? frame.args.toString() : "None",
+            frame.args ? frame.args.toString() : "None"
         );
         root.list = [
             "$filmcamera.scripts.ui.new.editor_working_frame.button1",
-            "$filmcamera.scripts.ui.new.editor_working_frame.button2",
+            "$filmcamera.scripts.ui.new.editor_working_frame.button2"
         ];
         root.func = [
             function (player) {
@@ -181,17 +181,17 @@ export const ui_list = {
                         ui_list.editor_working_scene(
                             player,
                             data.scenes,
-                            data.sceneIndex,
+                            data.sceneIndex
                         );
                     },
                     function (player) {
                         ui_list.editor_working_frame(player);
-                    },
+                    }
                 );
             },
             function (player) {
                 ui_list.editor_working_choose_operator(player, frame, data);
-            },
+            }
         ];
         root.UserClosedProcessor = function (player) {
             ui_list.editor_working_scene(player, data.scenes, data.sceneIndex);
@@ -208,7 +208,7 @@ export const ui_list = {
         const keysList = Object.keys(dockingTool.OptionalOperator);
         for (const i of keysList)
             root.list.push(
-                `filmcamera.scripts.editor.operator_meta_map.translate.${i}`,
+                `filmcamera.scripts.editor.operator_meta_map.translate.${i}`
             );
         for (const i of keysList) {
             root.func.push(function (player) {
@@ -216,7 +216,7 @@ export const ui_list = {
                 ui_list.editor_working_edit_args(
                     player,
                     dockingTool.OptionalOperator[i],
-                    _data,
+                    _data
                 );
             });
         }
@@ -252,7 +252,7 @@ export const ui_list = {
         root.list = [
             "$filmcamera.scripts.ui.new.editor_menu.button1",
             "$filmcamera.scripts.ui.new.editor_menu.button2",
-            "$filmcamera.scripts.ui.new.editor_menu.button3",
+            "$filmcamera.scripts.ui.new.editor_menu.button3"
         ];
         root.func = [
             function (player) {
@@ -263,7 +263,7 @@ export const ui_list = {
             },
             function (player) {
                 player.sendMessage("Working...");
-            },
+            }
         ];
         root.UserClosedProcessor = function (player) {
             ui_list.menu(player);
@@ -298,8 +298,8 @@ export const ui_list = {
             [
                 "textField",
                 "$filmcamera.scripts.ui.new.editor_new_setName.nameInput.label",
-                "$filmcamera.scripts.ui.new.editor_new_setName.nameInput.placeholderText",
-            ],
+                "$filmcamera.scripts.ui.new.editor_new_setName.nameInput.placeholderText"
+            ]
         ];
         root.func = function (player, values) {
             const result = values[0];
@@ -311,14 +311,14 @@ export const ui_list = {
                 player,
                 translate(
                     "filmcamera.scripts.ui.new.editor_new_setName.tip.message",
-                    result,
+                    result
                 ),
                 function () {
                     ui_list.editor_new_setting(player, result);
                 },
                 function () {
                     ui_list.editor_new_setName(player);
-                },
+                }
             );
         };
         root.UserClosedProcessor = function (player) {
@@ -339,22 +339,22 @@ export const ui_list = {
                 "$filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.label",
                 [
                     translate(
-                        "filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.public",
+                        "filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.public"
                     ),
                     translate(
-                        "filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.private",
-                    ),
-                ],
-            ],
+                        "filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.private"
+                    )
+                ]
+            ]
         ];
         root.func = function (player, values) {
             dockingTool.initProject(player, {
                 name: projectName,
-                type: ["public", "private"][values[0]],
+                type: ["public", "private"][values[0]]
             });
         };
         root.preventCanceled();
         root.build();
         root.show(player);
-    },
+    }
 };
