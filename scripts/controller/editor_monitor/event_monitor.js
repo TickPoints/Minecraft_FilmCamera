@@ -57,34 +57,84 @@ ServerWorld.beforeEvents.playerBreakBlock.subscribe(eventData => {
 });
 
 try {
-    ServerWorld.afterEvents.worldLoad(WorldLoad);
+    ServerWorld.afterEvents.worldInitialize.subscribe(WorldLoad);
 } catch {
-    ServerWorld.afterEvents.worldInitiation(WorldLoad);
+    ServerWorld.afterEvents.worldLoad.subscribe(WorldLoad);
 }
 
-function worldLoad() {
-    for (const i of Object.keys(RealTimeLoader)) ServerSystem.runInterval(i);
+function WorldLoad() {
+    for (const i of Object.keys(RealTimeLoader))
+        ServerSystem.runInterval(RealTimeLoader[i], 1);
 }
 
 const RealTimeLoader = {
     HighlightBlock: function () {
         let blocks = [];
         for (const player of ServerWorld.getAllPlayers()) {
-            const playerData = getDataManager(player);
-            if (playerData.selection[0] !== {})
-                block.push(playerData.selection[0]);
-            if (playerData.selection[1] !== {})
-                block.push(playerData.selection[1]);
+            try {
+                const playerData = getDataManager(player);
+                if (playerData.selection[0] !== {})
+                    blocks.push(playerData.selection[0]);
+                if (playerData.selection[1] !== {})
+                    blocks.push(playerData.selection[1]);
+            } catch {
+                // empty
+            }
         }
         for (const block of blocks) {
-            ServerWorld.getDimension(block.dimension).spawnParticle(
-                "filmcamera:highlight",
-                {
-                    x: block.x,
-                    y: block.y,
-                    z: block.z
+            try {
+                function spawnParticle(deviationX, deviationY, deviationZ) {
+                    ServerWorld.getDimension(block.dimension).spawnParticle(
+                        "filmcamera:highlight",
+                        {
+                            x: block.x + deviationX,
+                            y: block.y + deviationY,
+                            z: block.z + deviationZ
+                        }
+                    );
                 }
-            );
+                spawnParticle(0, 0, 0);
+                spawnParticle(1, 0, 0);
+                spawnParticle(1, 1, 0);
+                spawnParticle(1, 1, 1);
+                spawnParticle(1, 0, 1);
+                spawnParticle(0, 1, 0);
+                spawnParticle(0, 1, 1);
+                spawnParticle(0, 0, 1);
+            } catch {
+                // empty
+            }
+        }
+    },
+    HighlightLocation: function () {
+        let blocks = [];
+        for (const player of ServerWorld.getAllPlayers()) {
+            try {
+                const playerData = getDataManager(player);
+                if (playerData.selection[0] !== {})
+                    blocks.push(playerData.selection[0]);
+                if (playerData.selection[1] !== {})
+                    blocks.push(playerData.selection[1]);
+            } catch {
+                // empty
+            }
+        }
+        for (const block of blocks) {
+            try {
+                function spawnParticle(deviationX, deviationY, deviationZ) {
+                    ServerWorld.getDimension(block.dimension).spawnParticle(
+                        "filmcamera:highlight",
+                        {
+                            x: block.x + deviationX,
+                            y: block.y + deviationY,
+                            z: block.z + deviationZ
+                        }
+                    );
+                }
+                spawnParticle(0.5, 0.5, 0.5);
+            } catch {
+                // empty
+            }
         }
     }
 };
