@@ -139,7 +139,19 @@ function initProject(player, projectConfig) {
         scenes_composer: [],
         config: {}
     };
-    const playerData = getDataManager(player);
+    switch (projectConfig.type) {
+        case "private": {
+            const playerData = getDataManager(player);
+            playerData.projects[projectConfig.name] = projectData;
+            break;
+        }
+        case "public": {
+            worldData.projects[projectConfig.name] = projectData;
+            break;
+        }
+        default:
+            return;
+    }
     openProject(player, projectConfig);
     printToPlayer(
         player,
