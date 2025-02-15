@@ -2,21 +2,44 @@ import {
     world as ServerWorld,
     system as ServerSystem
 } from "@minecraft/server";
-import { sandbox } from "../lib/sandbox.js";
 import { parse_scene } from "./parser.js";
-
-function run_in_sandbox(player, scene) {
-    return sandbox(scene, {
-        PlayerCamera: player.camera,
-        Player: player,
-        ServerWorld,
-        ServerSystem
-    });
-}
 
 function play_frames(frames, player) {
     const data = frames.join("\n");
-    return run_in_sandbox(player, data);
+    const AsyncFunction = async function () {}.constructor;
+    let func;
+    func = new AsyncFunction(
+        `with(this) {${data}}`
+    );
+    function parseError(error) {
+        let match = error.stack.split("\n")[0].match(/\((.*?):(\d+)\)/);
+        if (match && match.length === 3) {
+            match = match[2] - 2;
+        }
+        console.error(`There were some errors in the frames execution: ${error.message}${match ? `      at frame[${match}]` : ""}`);
+    }
+    return new Promise((resolve) => {
+        const context = {
+            PlayerCamera: player.camera,
+            Player: player,
+            ServerWorld,
+            ServerSystem
+        };
+        try {
+            const result = func.call(context);
+            if (result instanceof Promise) {
+                result.then(resolve).catch((error) => {
+                    parseError(error);
+                    resolve();
+                });
+            } else {
+                resolve(result);
+            }
+        } catch (error) {
+            parseError(error);
+            resolve();
+        }
+    });
 }
 
 function play_scene(scene, players) {
