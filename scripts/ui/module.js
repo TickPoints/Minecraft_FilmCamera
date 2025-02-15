@@ -155,6 +155,14 @@ class ModalUI {
         for (const i of this.list) {
             let args = i.slice(1);
             for (let j = 0; j < args.length; j++) args[j] = raw(args[j]);
+            if (i[0][0] === "#") {
+                try {
+                    rootUI[i[0].substring(1)](...args);
+                } catch {
+                    // empty
+                }
+                continue;
+            }
             rootUI[i[0]](...args);
         }
         return this;

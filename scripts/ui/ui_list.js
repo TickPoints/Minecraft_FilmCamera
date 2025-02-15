@@ -165,7 +165,7 @@ export const ui_list = {
         root.message = translate(
             "filmcamera.scripts.ui.new.editor_working_frame.message",
             frame.operator ? frame.operator : "None",
-            frame.args ? frame.args.toString() : "None"
+            frame.args ? JSON.stringify(frame.args) : "None"
         );
         root.list = [
             "$filmcamera.scripts.ui.new.editor_working_frame.button1",
