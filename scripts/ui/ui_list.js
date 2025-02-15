@@ -131,7 +131,7 @@ export const ui_list = {
                     "$filmcamera.scripts.ui.new.editor_working_scene.tip",
                     function (player) {
                         dockingTool.removeScene(player, index);
-                        ui_list.editor_working(player);
+                        ui_list.editor_working(player, scenes, index);
                     },
                     function (player) {
                         ui_list.editor_working_scene(player);
@@ -189,7 +189,7 @@ export const ui_list = {
                         );
                     },
                     function (player) {
-                        ui_list.editor_working_frame(player);
+                        ui_list.editor_working_frame(player, data.scenes, data.sceneIndex);
                     }
                 );
             },
