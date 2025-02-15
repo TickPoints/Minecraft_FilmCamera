@@ -4,6 +4,7 @@ import { translate } from "../../text/local.js";
 import { printToPlayer } from "../../text/print.js";
 import { getDataManager } from "../../lib/data_manager.js";
 import { operator_meta_map } from "../maps/operator_meta_map.js";
+import { play_scenes } from "../player.js";
 
 const worldData = getDataManager(ServerWorld);
 
@@ -207,12 +208,21 @@ function addScene(player) {
     projectData.scenes.push({
         frames: []
     });
+    projectData.scenes_composer.push({
+        order: "top"
+    });
 }
 
 function removeScene(player, index) {
     const projectData = getCurrentProjectData(player);
     projectData.scenes.splice(index, 1);
     projectData.scenes_composer.splice(index, 1);
+}
+
+function playProjectForEditor(projectData, player) {
+    return play_scenes(projectData.scenes, projectData.scenes_composer, [
+        player
+    ]);
 }
 
 export {
@@ -227,5 +237,6 @@ export {
     getCurrentPlayerData,
     addScene,
     removeScene,
-    operator_meta_map as OptionalOperator
+    operator_meta_map as OptionalOperator,
+    playProjectForEditor
 };
