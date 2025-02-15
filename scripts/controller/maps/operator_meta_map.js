@@ -1,23 +1,34 @@
 function parseRGB(text) {
     let rgb = [];
+    console.warn(text.substring(3))
     try {
         if (text[0] === "#") {
             const parts = text.substring(1).match(/.{1,2}/g);
-            for (const prat of parts) rgb.push(parseInt(prat, 16));
+            for (const part of parts) {
+                rgb.push(parseInt(part, 16) / 255);
+            }
+        } else if (text.substring(0, 3) === "P3 ") {
+            // P3 colors are supported.
+            const parts = text.substring(3).split(/,\s?/);
+            for (const part of parts) {
+                rgb.push(Number(part));
+            }
         } else {
             const parts = text.split(/,\s?/);
-            for (const prat of parts) rgb.push(parseInt(prat));
+            for (const part of parts) {
+                rgb.push(parseInt(part) / 255);
+            }
         }
     } catch {
-        rgb = [255, 255, 255];
+        rgb = [1, 1, 1];
     }
     for (const i of rgb) {
-        if (i === NaN || i === Infinity || i === -Infinity) {
-            rgb = [255, 255, 255];
+        if (isNaN(i) || i === Infinity || i === -Infinity) {
+            rgb = [1, 1, 1];
             break;
         }
-        if (i < 0 || i > 255) {
-            rgb = [255, 255, 255];
+        if (i < 0 || i > 1) {
+            rgb = [1, 1, 1];
             break;
         }
     }

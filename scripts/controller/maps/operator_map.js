@@ -8,7 +8,7 @@ export const operator_map = {
     "camera-fade": function (type, fadeCameraOptions) {
         return {
             script: `PlayerCamera.fade(${JSON.stringify(fadeCameraOptions)});`,
-            command: `/camera [player] fade ${fadeCameraOptions.fadeColor ? `color ${fadeCameraOptions.fadeColor.red} ${fadeCameraOptions.fadeColor.green} ${fadeCameraOptions.fadeColor.blue} ` : ""}${fadeCameraOptions.fadeTime ? `time ${fadeCameraOptions.fadeTime.fadeInTime} ${fadeCameraOptions.fadeTime.fadeInTime.holdTime} ${fadeCameraOptions.fadeTime.fadeOutTime}` : ""}`
+            command: `/camera [player] fade ${fadeCameraOptions.fadeColor ? `color ${fadeCameraOptions.fadeColor.red * 255} ${fadeCameraOptions.fadeColor.green * 255} ${fadeCameraOptions.fadeColor.blue * 255} ` : ""}${fadeCameraOptions.fadeTime ? `time ${fadeCameraOptions.fadeTime.fadeInTime * 255} ${fadeCameraOptions.fadeTime.fadeInTime.holdTime * 255} ${fadeCameraOptions.fadeTime.fadeOutTime * 255}` : ""}`
         }[type];
     },
     "inputpermission-movement": function (type, status) {
