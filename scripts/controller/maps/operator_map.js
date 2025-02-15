@@ -13,14 +13,14 @@ export const operator_map = {
     },
     "inputpermission-movement": function (type, status) {
         return {
-            script: `player.inputPermissions.setPermissionCategory(2, ${status});`,
-            command: `/inputpermission set [player] movement ${status}`
+            script: `Player.inputPermissions.setPermissionCategory(2, ${status});`,
+            command: `/inputpermission set [player] movement ${status ? "enabled" : "disabled"}`
         }[type];
     },
     "inputpermission-camera": function (type, status) {
         return {
-            script: `player.inputPermissions.setPermissionCategory(1, ${status});`,
-            command: `/inputpermission set [player] camera ${status}`
+            script: `Player.inputPermissions.setPermissionCategory(1, ${status});`,
+            command: `/inputpermission set [player] camera ${status ? "enabled" : "disabled"}`
         }[type];
     },
     "player-runMinecraftCommand": function (type, command) {

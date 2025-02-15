@@ -40,7 +40,7 @@ function parseRGB(text) {
 }
 
 function parseTime(text) {
-    let time = parseInt(text);
+    let time = Number(text);
     if (time === NaN || time === Infinity || time === -Infinity || time < 1) {
         time = 5;
     }
@@ -110,32 +110,36 @@ export const operator_meta_map = {
     "inputpermission-movement": {
         ui: [
             [
-                "textField",
-                "This is an operator with no parameters and no content.",
-                "Null"
+                "toggle",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.inputpermission-movement.toggle.name"
             ]
         ],
-        func: function (player, result) {}
+        func: function (player, result, frame) {
+            frame.args[0] = result[0];
+        }
     },
     "inputpermission-camera": {
         ui: [
             [
-                "textField",
-                "This is an operator with no parameters and no content.",
-                "Null"
+                "toggle",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.inputpermission-camera.toggle.name"
             ]
         ],
-        func: function (player, result) {}
+        func: function (player, result, frame) {
+            frame.args[0] = result[0];
+        }
     },
     "player-runMinecraftCommand": {
         ui: [
             [
                 "textField",
-                "This is an operator with no parameters and no content.",
-                "Null"
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.player-runMinecraftCommand.input.name",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.player-runMinecraftCommand.input.placeholder"
             ]
         ],
-        func: function (player, result) {}
+        func: function (player, result, frame) {
+            frame.args[0] = result[0];
+        }
     },
     "time-waitTicks": {
         ui: [
