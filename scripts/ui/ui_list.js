@@ -83,8 +83,9 @@ export const ui_list = {
             projectMeta.source
         );
         root.list = [
-            "$filmcamera.scripts.ui.new.editor_working.button1",
-            "$filmcamera.scripts.ui.new.editor_working.button2"
+            "$filmcamera.scripts.ui.new.editor_working.entry.setting",
+            "$filmcamera.scripts.ui.new.editor_working.entry.play",
+            "$filmcamera.scripts.ui.new.editor_working.entry.new"
         ];
         for (let i = 1; i <= projectData.scenes.length; i++) {
             root.list.push(`Scene [${i}]`);
@@ -92,6 +93,9 @@ export const ui_list = {
         root.func = [
             function (player) {
                 player.sendMessage("Working...");
+            },
+            function (player) {
+                dockingTool.playProjectForEditor(projectData, player);
             },
             function (player) {
                 dockingTool.addScene(player);
