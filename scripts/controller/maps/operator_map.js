@@ -34,5 +34,11 @@ export const operator_map = {
             script: `await ServerSystem.waitTicks(${ticks});`,
             command: `!!!waitTicks ${ticks}`
         }[type];
+    },
+    "debug-throwError": function (type, errorMessage) {
+        return {
+            script: `throw new Error("${errorMessage}");`,
+            command: "!!!throwError"
+        }[type]
     }
 };

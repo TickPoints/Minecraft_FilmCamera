@@ -41,8 +41,8 @@ function parseRGB(text) {
 
 function parseTime(text) {
     let time = Number(text);
-    if (time === NaN || time === Infinity || time === -Infinity || time < 1) {
-        time = 5;
+    if (time === NaN || time === Infinity || time === -Infinity || time < 0) {
+        time = 1;
     }
     return time;
 }
@@ -145,10 +145,24 @@ export const operator_meta_map = {
         ui: [
             [
                 "textField",
-                "This is an operator with no parameters and no content.",
-                "Null"
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.time-waitTicks.input.name",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.time-waitTicks.input.placeholder"
             ]
         ],
-        func: function (player, result) {}
-    }
+        func: function (player, result, frame) {
+            frame.args[0] = parseTime(result[0]);
+        }
+    },
+    "debug-throwError": {
+        ui: [
+            [
+                "textField",
+                "ErrorName",
+                "Enter Error"
+            ]
+        ],
+        func: function (player, result, frame) {
+            frame.args[0] = result[0];
+        }
+    },
 };
