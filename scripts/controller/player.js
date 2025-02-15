@@ -16,16 +16,7 @@ function run_in_sandbox(player, scene) {
 
 function play_frames(frames, player) {
     const data = frames.join("\n");
-    try {
-        return run_in_sandbox(player, data);
-    } catch (e) {
-        console.error(
-            "Some errors occurred during the execution of frames:",
-            e,
-            e.stack
-        );
-        return null;
-    }
+    return run_in_sandbox(player, data);
 }
 
 function play_scene(scene, players) {
