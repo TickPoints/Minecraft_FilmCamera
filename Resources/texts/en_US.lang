@@ -76,8 +76,9 @@ filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.public=Public
 filmcamera.scripts.ui.new.editor_new_setting.belonging_selection.private=Private
 filmcamera.scripts.ui.new.editor_working.title=§bEDITOR
 filmcamera.scripts.ui.new.editor_working.message=Now you can edit the project. Use §bSetting§r or §bNew Scene§r to control project. Choose a scene to edit.\nProject Meta：\nName:§b%1§r\nType:§b%2§r\nOwner:§b%3§r§7(In the public project, the owner is left blank)
-filmcamera.scripts.ui.new.editor_working.button1=Setting
-filmcamera.scripts.ui.new.editor_working.button2=New Scene
+filmcamera.scripts.ui.new.editor_working.entry.setting=Setting
+filmcamera.scripts.ui.new.editor_working.entry.play=Test Play[For current player]
+filmcamera.scripts.ui.new.editor_working.entry.new=New Scene
 filmcamera.scripts.ui.new.setting_menu.title=§bSetting
 filmcamera.scripts.ui.new.setting_menu.message=Control Global
 filmcamera.scripts.ui.new.editor_working_scene.title=§bScene Editor
@@ -101,6 +102,11 @@ filmcamera.scripts.ui.new.editor_working_choose_operator.title=§eSet Frame Oper
 filmcamera.scripts.ui.new.editor_working_choose_operator.message=Choose current frame's operator.
 filmcamera.scripts.ui.new.editor_working_edit_args.title=§eSet Frame Args
 filmcamera.scripts.ui.new.editor_working_edit_args.message=Edit Frame's Args
+
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_color_toggle.name=Use color fade?\n(If you want to use, please enter color. The wrong color will be set to 255,255,255.)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.color_input.name=Color\n(Supports #FFFFFF and 255,255,255 color representations)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.color_input.placeholder=Enter Color
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_time_toggle.name=Use time fade?\n(If you want to use, please enter time. The wrong time will be set to 5.)
 ## Items
 itemGroup.name.filmcamera=§eFILMCAMERA Items
 item.filmcamera:selection_bar1.name=selection bar1
