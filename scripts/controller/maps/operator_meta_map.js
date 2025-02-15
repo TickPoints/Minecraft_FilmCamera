@@ -1,6 +1,6 @@
 function parseRGB(text) {
     let rgb = [];
-    console.warn(text.substring(3))
+    console.warn(text.substring(3));
     try {
         if (text[0] === "#") {
             const parts = text.substring(1).match(/.{1,2}/g);

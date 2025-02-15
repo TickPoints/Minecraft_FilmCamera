@@ -189,7 +189,11 @@ export const ui_list = {
                         );
                     },
                     function (player) {
-                        ui_list.editor_working_frame(player, data.scenes, data.sceneIndex);
+                        ui_list.editor_working_frame(
+                            player,
+                            data.scenes,
+                            data.sceneIndex
+                        );
                     }
                 );
             },
