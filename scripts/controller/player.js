@@ -8,17 +8,17 @@ function play_frames(frames, player) {
     const data = frames.join("\n");
     const AsyncFunction = async function () {}.constructor;
     let func;
-    func = new AsyncFunction(
-        `with(this) {${data}}`
-    );
+    func = new AsyncFunction(`with(this) {${data}}`);
     function parseError(error) {
         let match = error.stack.split("\n")[0].match(/\((.*?):(\d+)\)/);
         if (match && match.length === 3) {
             match = match[2] - 2;
         }
-        console.error(`There were some errors in the frames execution: ${error.message}${match ? `      at frame[${match}]` : ""}`);
+        console.error(
+            `There were some errors in the frames execution: ${error.message}${match ? `      at frame[${match}]` : ""}`
+        );
     }
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         const context = {
             PlayerCamera: player.camera,
             Player: player,
@@ -28,7 +28,7 @@ function play_frames(frames, player) {
         try {
             const result = func.call(context);
             if (result instanceof Promise) {
-                result.then(resolve).catch((error) => {
+                result.then(resolve).catch(error => {
                     parseError(error);
                     resolve();
                 });

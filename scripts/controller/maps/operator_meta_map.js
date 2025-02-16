@@ -1,6 +1,5 @@
 function parseRGB(text) {
     let rgb = [];
-    console.warn(text.substring(3));
     try {
         if (text[0] === "#") {
             const parts = text.substring(1).match(/.{1,2}/g);
@@ -41,7 +40,7 @@ function parseRGB(text) {
 
 function parseTime(text) {
     let time = Number(text);
-    if (time === NaN || time === Infinity || time === -Infinity || time < 0) {
+    if (isNaN(time) || time === Infinity || time === -Infinity || time < 0) {
         time = 1;
     }
     return time;
@@ -154,15 +153,9 @@ export const operator_meta_map = {
         }
     },
     "debug-throwError": {
-        ui: [
-            [
-                "textField",
-                "ErrorName",
-                "Enter Error"
-            ]
-        ],
+        ui: [["textField", "ErrorName", "Enter Error"]],
         func: function (player, result, frame) {
             frame.args[0] = result[0];
         }
-    },
+    }
 };

@@ -39,6 +39,6 @@ export const operator_map = {
         return {
             script: `throw new Error("${errorMessage}");`,
             command: "!!!throwError"
-        }[type]
+        }[type];
     }
 };
