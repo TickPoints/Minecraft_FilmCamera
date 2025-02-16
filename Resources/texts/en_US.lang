@@ -18,10 +18,12 @@ filmcamera.scripts.editor.project.cannot_open.not_exist=§cThe current project w
 #### Frame Operator
 filmcamera.scripts.editor.operator_meta_map.translate.camera-clear=Clear Camera Effect
 filmcamera.scripts.editor.operator_meta_map.translate.camera-fade=Add Camera Fade
+filmcamera.scripts.editor.operator_meta_map.translate.camera-set_person=Set Camera Person
 filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-movement=Set Move Permission
-filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-carmera=Set Camera Permission
+filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-camera=Set Camera Permission
 filmcamera.scripts.editor.operator_meta_map.translate.player-runMinecraftCommand=Run Minecraft Command
 filmcamera.scripts.editor.operator_meta_map.translate.time-waitTicks=Wait Ticks
+filmcamera.scripts.editor.operator_meta_map.translate.debug-throwError=§b[Experiment]§r§c[Debug]§rThrow Error
 #### Events
 filmcamera.scripts.editor.events.selected_location1=Location1 [ %1, %2, %3 ] was selected
 filmcamera.scripts.editor.events.selected_location2=Location2 [ %1, %2, %3 ] was selected
@@ -103,10 +105,26 @@ filmcamera.scripts.ui.new.editor_working_choose_operator.message=Choose current 
 filmcamera.scripts.ui.new.editor_working_edit_args.title=§eSet Frame Args
 filmcamera.scripts.ui.new.editor_working_edit_args.message=Edit Frame's Args
 
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.use_ease_toggle.name=Use ease?
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.time_input.name=Ease Time
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.time_input.placeholder=Enter Ease Time
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.type_input.name=Ease Type
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.type_input.placeholder=Enter Ease Type
+
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_color_toggle.name=Use color fade?\n(If you want to use, please enter color. The wrong color will be set to 255,255,255.)
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.color_input.name=Color\n(Supports #FFFFFF and 255,255,255 color representations)
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.color_input.placeholder=Enter Color
-filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_time_toggle.name=Use time fade?\n(If you want to use, please enter time. The wrong time will be set to 5.)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_time_toggle.name=Use time fade?\n(If you want to use, please enter time. The wrong time will be set to 1.)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.name=Choose a person.
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.first=First Person
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.third=Third Person Back
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.third_front=Third Person Front
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.inputpermission-movement.toggle.name=Enabled move permission?
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.inputpermission-camera.toggle.name=Enabled camera permission?
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.player-runMinecraftCommand.input.name=Minecraft Command(Incorrect commands will report an error during playback.)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.player-runMinecraftCommand.input.placeholder=Enter Minecraft Command
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.time-waitTicks.input.name=Wait ticks
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.time-waitTicks.input.placeholder=Enter the amount of time to wait
 ## Items
 itemGroup.name.filmcamera=§eFILMCAMERA Items
 item.filmcamera:selection_bar1.name=selection bar1

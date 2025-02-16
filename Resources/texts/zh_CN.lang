@@ -18,10 +18,12 @@ filmcamera.scripts.editor.project.cannot_open.not_exist=§c当前项目未找到
 #### 帧操作符
 filmcamera.scripts.editor.operator_meta_map.translate.camera-clear=清除相机效果
 filmcamera.scripts.editor.operator_meta_map.translate.camera-fade=添加相机过渡
+filmcamera.scripts.editor.operator_meta_map.translate.camera-set_person=设置相机人称
 filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-movement=控制移动权限
-filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-carmera=控制相机权限
+filmcamera.scripts.editor.operator_meta_map.translate.inputpermission-camera=控制相机权限
 filmcamera.scripts.editor.operator_meta_map.translate.player-runMinecraftCommand=执行Minecraft命令
 filmcamera.scripts.editor.operator_meta_map.translate.time-waitTicks=等待Ticks
+filmcamera.scripts.editor.operator_meta_map.translate.debug-throwError=§b[实验]§r§c[Debug]§rThrow Error
 #### 事件
 filmcamera.scripts.editor.events.selected_location1=§b位置1 [ %1, %2, %3 ] 已被选定
 filmcamera.scripts.editor.events.selected_location2=§b位置2 [ %1, %2, %3 ] 已被选定
@@ -96,14 +98,30 @@ filmcamera.scripts.ui.new.editor_working_choose_operator.message=选择当前帧
 filmcamera.scripts.ui.new.editor_working_edit_args.title=§e设定帧Args
 filmcamera.scripts.ui.new.editor_working_edit_args.message=编辑帧Args。
 
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.use_ease_toggle.name=使用过渡
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.time_input.name=过渡时间
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.time_input.placeholder=输入过渡时间
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.type_input.name=过渡类型
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.type_input.placeholder=输入过渡类型
+
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_color_toggle.name=是否使用颜色渐变\n(如果使用请在后面的输入框中输入颜色数据，错误的颜色将会被设置成255, 255, 255)
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.color_input.name=颜色\n(支持#FFFFFF和255, 255, 255的颜色表达)
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.color_input.placeholder=输入颜色
-filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_time_toggle.name=是否使用时间渐变\n(如果使用请在后面的几个输入框中输入时间数据，错误的时间将会被设为5)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.use_time_toggle.name=是否使用时间渐变\n(如果使用请在后面的几个输入框中输入时间数据，错误的时间将会被设为1)
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.time_input.placeholder=输入时间
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.time_input.fadeInTime=淡入的时间(以秒为单位)
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.time_input.fadeOutTime=淡出的时间(以秒为单位)
 filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-fade.time_input.holdTime=保持全屏颜色的时间(以秒为单位)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.name=选择一个人称
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.first=第一人称
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.third=第三人称背面
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.third_front=第三人称正面
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.inputpermission-movement.toggle.name=移动权限
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.inputpermission-camera.toggle.name=相机转动权限
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.player-runMinecraftCommand.input.name=Minecraft命令(错误的命令将在播放时报错)
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.player-runMinecraftCommand.input.placeholder=输入Minecraft命令
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.time-waitTicks.input.name=等待时间
+filmcamera.scripts.ui.new.editor_working_edit_args.meta.time-waitTicks.input.placeholder=输入要等待的时间
 ## 物品
 itemGroup.name.filmcamera=§eFILMCAMERA物品
 item.filmcamera:selection_bar1.name=选择棒1
