@@ -1,3 +1,5 @@
+import { translate } from "../../text/local.js";
+
 function parseRGB(text) {
     let rgb = [];
     try {
@@ -104,6 +106,44 @@ export const operator_meta_map = {
                 };
             }
             frame.args[0] = fadeCameraOptions;
+        }
+    },
+    "camera-set_person": {
+        ui: [
+            [
+                "dropdown",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.name",
+                [
+                    translate("filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.first"),
+                    translate("filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.third"),
+                    translate("filmcamera.scripts.ui.new.editor_working_edit_args.meta.camera-set_person.person_selector.third_front")
+                ]
+            ],
+            ["#divider"],
+            [
+                "toggle",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.use_ease_toggle.name",
+                false
+            ],
+            [
+                "textField",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.time_input.name",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.time_input.placeholder"
+            ],
+            [
+                "textField",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.type_input.name",
+                "$filmcamera.scripts.ui.new.editor_working_edit_args.meta.ease.type_input.placeholder"
+            ]
+        ],
+        func: function (player, result, frame) {
+            frame.args[0] = result[0];
+            if (result[1]) {
+                frame.args[1] = {
+                    easeTime: parseTime(result[2]),
+                    easeType: result[3]
+                };
+            }
         }
     },
     "inputpermission-movement": {

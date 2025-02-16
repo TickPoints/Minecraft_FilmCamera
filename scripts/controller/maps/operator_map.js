@@ -11,6 +11,13 @@ export const operator_map = {
             command: `/camera [player] fade ${fadeCameraOptions.fadeColor ? `color ${fadeCameraOptions.fadeColor.red * 255} ${fadeCameraOptions.fadeColor.green * 255} ${fadeCameraOptions.fadeColor.blue * 255} ` : ""}${fadeCameraOptions.fadeTime ? `time ${fadeCameraOptions.fadeTime.fadeInTime * 255} ${fadeCameraOptions.fadeTime.fadeInTime.holdTime * 255} ${fadeCameraOptions.fadeTime.fadeOutTime * 255}` : ""}`
         }[type];
     },
+    "camera-set_person": function (type, status, easeType = {}) {
+        const statusMap = ["minecraft:first_person", "minecraft:third_person", "minecraft:third_person_front"];
+        return {
+            script: `PlayerCamera.setCamera("${statusMap[status]}", ${JSON.stringify(easeOptions)});`,
+            command: `/camera [player] set ${statusMap[status]} ease ${easeOptions.easeTime} ${easeOptions.easeType}`
+        }[type];
+    },
     "inputpermission-movement": function (type, status) {
         return {
             script: `Player.inputPermissions.setPermissionCategory(2, ${status});`,
@@ -40,5 +47,5 @@ export const operator_map = {
             script: `throw new Error("${errorMessage}");`,
             command: "!!!throwError"
         }[type];
-    }
+    },
 };
